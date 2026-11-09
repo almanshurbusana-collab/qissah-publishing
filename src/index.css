@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --f-display: 'Gloock', Georgia, 'Times New Roman', serif;
+    --f-body: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+    --f-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    
+    --color-paper: #F2F7F4;
+    --color-card: #FFFFFF;
+    --color-ink: #0A2A22;
+    --color-muted: #46605A;
+    --color-emerald: #0A7B5B;
+    --color-emerald-soft: #D8EEE3;
+    --color-gold: #F5CB45;
+    --color-line: rgba(10, 42, 34, 0.16);
+    --color-shadow: rgba(10, 42, 34, 0.2);
+    --color-band: #0A2A22;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--f-body);
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--f-display);
+    text-wrap: balance;
+  }
+
+  .font-mono {
+    font-family: var(--f-mono);
+  }
+}
+
+/* Print-shop letterpress & hard block shadow aesthetic */
+.btn-press {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  border: 2px solid #0A2A22;
+  box-shadow: 4px 4px 0 #0A2A22;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.btn-press:hover:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #0A2A22;
+}
+
+.btn-press:active:not(:disabled) {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 #0A2A22;
+}
+
+.btn-press-band {
+  border-color: #EAF5EF;
+  box-shadow: 4px 4px 0 #EAF5EF;
+}
+
+.btn-press-band:hover:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #EAF5EF;
+}
+
+.btn-press-band:active:not(:disabled) {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 #EAF5EF;
+}
+
+/* Highlighter effect */
+mark.gold-mark {
+  background: linear-gradient(transparent 16%, #F5CB45 16% 90%, transparent 90%);
+  color: #0A2A22;
+  padding: 0 0.2em;
+  margin: 0 -0.1em;
+  display: inline-block;
+  transform: rotate(-1.2deg);
+}
+
+/* Hero Book Print Plate Styles */
+.hero-art {
+  margin: 0;
+  width: 100%;
+  max-width: 440px;
+}
+.plate {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.crop {
+  position: absolute;
+  pointer-events: none;
+}
+.crop.tl { top: 8px; left: 8px; }
+.crop.tr { top: 8px; right: 8px; }
+.crop.bl { bottom: 8px; left: 8px; }
+.crop.br { bottom: 8px; right: 8px; }
+.book-slot {
+  width: 100%;
+}
+.hero-book {
+  display: block;
+}
+.sticker {
+  user-select: none;
+}
+

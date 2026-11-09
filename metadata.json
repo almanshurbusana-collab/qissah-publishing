@@ -1,0 +1,6 @@
+{
+  "name": "Qissah Publishing",
+  "description": "Penerbit buku ber-ISBN di Bogor. Layanan penerbitan buku murah, berkualitas, dan legal untuk dosen, mahasiswa, guru, penulis, dan toko buku terbitan Qissah.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
