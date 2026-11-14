@@ -53,7 +53,7 @@ export const COMPANY = {
   waDisplay: '0816-4252-777',
   email: 'qissahpublishing@gmail.com',
   kbli: '58110 (Aktivitas Penerbitan Buku)',
-  logoUrl: '/images/logo.webp',
+  logoUrl: '/images/logo.png',
   legalImgUrl: '/images/legal-certificate.webp',
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Jl.+Raya+Cifor,+RT.01/RW.07,+Kelurahan+Bubulak,+Kecamatan+Bogor+Barat,+Kota+Bogor,+Jawa+Barat+16115',
   googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Jl.+Raya+Cifor,+RT.01/RW.07,+Kelurahan+Bubulak,+Kecamatan+Bogor+Barat,+Kota+Bogor,+Jawa+Barat+16115',

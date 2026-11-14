@@ -27,23 +27,20 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="sticky top-0 z-40 bg-[#F2F7F4]/95 backdrop-blur-md border-b-2 border-emerald-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
-        {/* Brand Logo with Publishing underneath */}
+        {/* Brand Logo */}
         <button
           onClick={() => handleNavClick('home')}
-          className="flex flex-col items-center justify-center text-center focus:outline-hidden group cursor-pointer shrink-0"
-          aria-label="Qissah Publishing, ke Beranda"
+          className="flex items-center justify-center focus:outline-hidden group cursor-pointer shrink-0"
+          aria-label="PT Qissah Global Nusantara, ke Beranda"
         >
           <img
             src={COMPANY.logoUrl}
-            alt="Logo Qissah Publishing"
-            className="h-8 sm:h-9 w-auto object-contain group-hover:opacity-90 transition-opacity"
+            alt="Logo PT Qissah Global Nusantara"
+            className="h-10 sm:h-12 w-auto object-contain group-hover:opacity-90 transition-opacity"
             onError={(e) => {
               (e.currentTarget as HTMLElement).style.display = 'none';
             }}
           />
-          <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.28em] text-emerald-900 font-bold leading-tight mt-1 text-center">
-            Publishing
-          </span>
         </button>
 
         {/* Desktop Navigation Links */}
