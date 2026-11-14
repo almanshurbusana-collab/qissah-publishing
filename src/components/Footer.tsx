@@ -26,7 +26,7 @@ export const Footer: React.FC<FooterProps> = ({
                 Konsultasi Naskah Tanpa Biaya
               </span>
               <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-white font-bold leading-tight">
-                Punya draf naskah yang siap diterbitkan dan ber-ISBN?
+                Punya draf naskah yang siap diterbitkan?
               </h2>
               <p className="mt-2 text-sm text-emerald-200">
                 Diskusikan format, estimasi biaya cetak, dan alur perolehan ISBN resmi Perpustakaan Nasional bersama tim editorial Qissah.

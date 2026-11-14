@@ -231,18 +231,18 @@ export default function App() {
                     </div>
 
                     <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-5xl text-white font-bold leading-[1.15] tracking-tight">
-                      Terbitkan Karya Anda dengan{' '}
+                      Terbitkan Karya Terbaik Anda di{' '}
                       <span className="text-amber-300 underline decoration-amber-400/50 decoration-wavy underline-offset-4">
-                        ISBN Resmi
+                        PT Qissah Global Nusantara
                       </span>{' '}
-                      dan Biaya{' '}
+                      dengan Biaya{' '}
                       <span className="text-amber-300 underline decoration-amber-400/50 decoration-wavy underline-offset-4">
                         Murah
                       </span>.
                     </h1>
 
                     <p className="text-base sm:text-lg text-emerald-100/90 leading-relaxed max-w-2xl font-light">
-                      Qissah Publishing mendampingi dosen, peneliti, sastrawan, dan penulis komunitas dari naskah mentah hingga menjadi buku fisik ber-ISBN Perpustakaan Nasional dengan cetakan presisi tinggi.
+                      Penerbitan buku murah, berkualitas, dan legal untuk dosen, mahasiswa, guru, penulis, dan masyarakat umum.
                     </p>
 
                     {/* CTAs */}
@@ -415,7 +415,7 @@ export default function App() {
                     Investasi Transparan
                   </span>
                   <h2 className="font-serif text-3xl sm:text-4xl text-emerald-950 font-bold mt-2">
-                    Pilihan Paket Penerbitan Ber-ISBN
+                    Pilihan Paket Penerbitan
                   </h2>
                   <p className="mt-3 text-emerald-800 text-sm sm:text-base">
                     Pilih paket yang paling sesuai dengan kesiapan naskah dan kebutuhan cetak Anda. Biaya cetak tambahan dapat dihitung terpisah secara fleksibel.
@@ -1162,15 +1162,12 @@ export default function App() {
                   PT Qissah Global Nusantara
                 </h1>
                 <p className="font-mono text-xs text-emerald-700 mt-1">
-                  Penerbitan Buku Berstandar ISBN Resmi & Layanan Percetakan Modern di Bogor
+                  Penerbitan Buku Murah & Layanan Percetakan Modern di Bogor
                 </p>
 
                 <div className="mt-6 text-sm sm:text-base text-emerald-900 leading-relaxed space-y-4 font-sans">
                   <p>
-                    <strong>Qissah Publishing</strong> lahir dari komitmen mendalam untuk menghidupkan ekosistem perbukuan Indonesia yang bermartabat. Berkedudukan di Bogor Barat, kami melayani penerbitan karya sastra, monograf akademik, buku ajar perguruan tinggi, antologi puisi, memoar inspiratif, hingga buku saku komunitas dengan standar redaksi yang ketat dan estetika perwajahan yang memikat.
-                  </p>
-                  <p>
-                    Sebagai bagian dari <strong>PT Qissah Global Nusantara</strong>, kami terdaftar resmi dalam Klasifikasi Baku Lapangan Usaha Indonesia (KBLI) 58110 untuk Aktivitas Penerbitan Buku. Setiap naskah yang diterbitkan melalui Qissah diproses secara sah melalui Perpustakaan Nasional Republik Indonesia (Perpusnas) dengan kepemilikan barcode EAN-13 berstandar internasional.
+                    <strong>PT Qissah Global Nusantara</strong> lahir dari komitmen mendalam untuk menghidupkan ekosistem perbukuan Indonesia yang bermartabat. Berkedudukan di Bogor Barat, kami melayani penerbitan karya sastra, monograf akademik, buku ajar perguruan tinggi, antologi puisi, memoar inspiratif, hingga buku saku komunitas dengan standar redaksi yang ketat dan estetika perwajahan yang memikat.
                   </p>
                 </div>
 

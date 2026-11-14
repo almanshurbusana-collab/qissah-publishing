@@ -76,6 +76,9 @@ const R_PATTERNS = ['1110010', '1100110', '1101100', '1000010', '1011100', '1001
 const PARITY_ENCODINGS = ['LLLLLL', 'LLGLGG', 'LLGGLG', 'LLGGGL', 'LGLLGG', 'LGGLLG', 'LGGGLL', 'LGLGLG', 'LGLGGL', 'LGGLGL'];
 
 export function calculateEan13(d12: string): { full: string; bits: string } {
+  if (!d12 || /x/i.test(d12)) {
+    return { full: 'xxxxxxxxxxxx', bits: '101' + '0000000'.repeat(12) + '101' };
+  }
   // If given a full 13-digit, take the first 12
   const clean12 = d12.replace(/\D/g, '').slice(0, 12).padEnd(12, '0');
   let s = 0;
@@ -108,6 +111,9 @@ export function calculateEan13(d12: string): { full: string; bits: string } {
 }
 
 export function formatIsbn(val: string): string {
+  if (!val || /x/i.test(val)) {
+    return 'xxxxxxxxxxxx';
+  }
   const digits = val.replace(/\D/g, '');
   if (digits.length >= 13) {
     return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6, 10)}-${digits.slice(10, 12)}-${digits.slice(12, 13)}`;
@@ -201,8 +207,8 @@ export const BOOKS: Book[] = [
     dimensions: '15,5 × 23 cm (UNESCO)',
     paper: 'Bookpaper Premium 72 gsm',
     cover: 'Softcover Art Carton 260 gsm Laminasi Doff',
-    isbn12: '978623000001',
-    isbn: calculateEan13('978623000001').full,
+    isbn12: 'xxxxxxxxxxxx',
+    isbn: 'xxxxxxxxxxxx',
     who: 'Mahasiswa S1/S2, dosen pengampu, dan peneliti pemula',
     desc: 'Panduan bertahap merancang penelitian kuantitatif: dari rumusan masalah, penyusunan instrumen, uji validitas dan reliabilitas, hingga membaca hasil uji statistik dasar dengan SPSS. Dilengkapi contoh kasus riil dan latihan mandiri di setiap bab.',
     synopsis: 'Buku ini dirancang khusus untuk mematahkan mitos bahwa penelitian kuantitatif itu rumit dan menakutkan bagi pemula. Penulis menyajikan setiap konsep statistik secara terstruktur dengan bahasa yang mengalir dan mudah dipahami, mulai dari hipotesis, teknik sampling, hingga output regresi.',
@@ -229,8 +235,8 @@ export const BOOKS: Book[] = [
     dimensions: '14 × 21 cm (A5 Standar)',
     paper: 'Bookpaper Import 72 gsm',
     cover: 'Softcover Art Carton 260 gsm Spot UV',
-    isbn12: '978623000002',
-    isbn: calculateEan13('978623000002').full,
+    isbn12: 'xxxxxxxxxxxx',
+    isbn: 'xxxxxxxxxxxx',
     who: 'Guru sekolah dasar hingga menengah, kepala sekolah, dan calon pendidik',
     desc: 'Catatan dan strategi praktis bagi guru yang ingin menggerakkan kelasnya: menyusun pembelajaran berdiferensiasi, membangun budaya belajar yang inklusif, dan berefleksi kritis setelah mengajar.',
     synopsis: 'Mengajar bukan sekadar menuntaskan kurikulum, melainkan menyalakan rasa ingin tahu siswa. Penulis membagikan pengalaman nyata selama lebih dari satu dekade di ruang-ruang kelas Indonesia, memuat lembar refleksi dan asesmen autentik.',
@@ -257,8 +263,8 @@ export const BOOKS: Book[] = [
     dimensions: '13 × 19 cm (Saku Prosa)',
     paper: 'Bookpaper 72 gsm Lembut di Mata',
     cover: 'Softcover Matte Doff 260 gsm',
-    isbn12: '978623000003',
-    isbn: calculateEan13('978623000003').full,
+    isbn12: 'xxxxxxxxxxxx',
+    isbn: 'xxxxxxxxxxxx',
     who: 'Pencinta fiksi, penikmat sastra kontemporer, dan pembaca umum',
     desc: 'Sembilan cerita pendek tentang denyut kehidupan orang-orang di sepanjang aliran sungai Ciliwung, dari penarik rakit bambu, pedagang pasar basah, hingga anak-anak yang memelihara mimpi di antara pemukiman rapat.',
     synopsis: 'Ciliwung menyimpan riwayat yang tak pernah habis dialirkan. Di tangan Salma Aulia, suara-suara lirih yang kerap luput dari perhatian kota diangkat menjadi prosa yang memikat, hangat, dan mengharukan.',
@@ -285,8 +291,8 @@ export const BOOKS: Book[] = [
     dimensions: '14 × 21 cm (A5 Standar)',
     paper: 'Bookpaper Premium 72 gsm',
     cover: 'Softcover Art Carton 260 gsm Doff',
-    isbn12: '978623000004',
-    isbn: calculateEan13('978623000004').full,
+    isbn12: 'xxxxxxxxxxxx',
+    isbn: 'xxxxxxxxxxxx',
     who: 'Profesional, karyawan, penulis pemula, dan siapapun yang ingin menerbitkan buku',
     desc: 'Panduan taktis menuntaskan naskah buku pertama di tengah rutinitas padat: merumuskan ide sentral, memecah kerangka menjadi target mikro 20 menit sehari, dan menyunting mandiri sebelum diajukan ke penerbit.',
     synopsis: 'Alasan nomor satu mengapa naskah tak pernah selesai bukanlah ketiadaan bakat, melainkan ketiadaan sistem yang selaras dengan kesibukan sehari-hari. Panduan ini membongkar rahasia produktivitas menulis 300 kata bermutu setiap pagi.',
@@ -313,8 +319,8 @@ export const BOOKS: Book[] = [
     dimensions: '15,5 × 23 cm (UNESCO)',
     paper: 'HVS Premium 70 gsm White Clean',
     cover: 'Softcover Laminasi Glossy Emboss Gold',
-    isbn12: '978623000005',
-    isbn: calculateEan13('978623000005').full,
+    isbn12: 'xxxxxxxxxxxx',
+    isbn: 'xxxxxxxxxxxx',
     who: 'Mahasiswa ekonomi syariah, praktisi fintech, dan akademisi',
     desc: 'Tinjauan komprehensif kaidah fiqih muamalah klasik dalam merespons transaksi modern: e-wallet, paylater, peer-to-peer lending syariah, dan cryptocurrency menurut fatwa DSN-MUI terkini.',
     synopsis: 'Perkembangan teknologi finansial menuntut pemahaman fiqih yang adaptif tanpa meninggalkan prinsip dasar syariah. Buku ini mengurai akad kontemporer dengan diagram alir yang jernih dan studi kasus nyata perbankan syariah.',
@@ -341,8 +347,8 @@ export const BOOKS: Book[] = [
     dimensions: '13 × 19 cm (Saku Prosa)',
     paper: 'Bookpaper Import 72 gsm',
     cover: 'Softcover Matte Doff 260 gsm',
-    isbn12: '978623000006',
-    isbn: calculateEan13('978623000006').full,
+    isbn12: 'xxxxxxxxxxxx',
+    isbn: 'xxxxxxxxxxxx',
     who: 'Pencinta puisi, komunitas sastra, dan warga Bogor',
     desc: 'Antologi puisi bertema keindahan, nostalgia, dan romansa Kota Bogor dari sudut pandang puluhan penulis lokal lintas generasi.',
     synopsis: 'Bogor dengan kabut tipis di Kebun Raya, dentang lonceng stasiun tua, dan aroma aspal basah di kala senja terangkum manis dalam larik-larik puisi. Bukti nyata suburnya literasi komunitas lokal Bogor.',
@@ -362,9 +368,9 @@ export const ADVANTAGES = [
     id: 'isbn',
     badge: '01',
     icon: 'isbn',
-    title: 'ISBN Resmi & Legal Perpusnas',
-    desc: 'Setiap buku diajukan nomor ISBN resmi ke Perpustakaan Nasional RI dan dilengkapi barcode EAN-13 standar internasional di sampul belakang.',
-    description: 'Setiap buku diajukan nomor ISBN resmi ke Perpustakaan Nasional RI dan dilengkapi barcode EAN-13 standar internasional di sampul belakang.',
+    title: 'Profesional',
+    desc: 'Kami mengelola setiap buku dengan Profesional dan standar tinggi untuk memastikan hasil kerja Buku Anda tampil profesional dan akademik.',
+    description: 'Kami mengelola setiap buku dengan Profesional dan standar tinggi untuk memastikan hasil kerja Buku Anda tampil profesional dan akademik.',
   },
   {
     id: 'tag',
@@ -474,10 +480,6 @@ export const TESTIMONIALS = [
 ];
 
 export const FAQS = [
-  {
-    q: 'Apakah ISBN yang diterbitkan Qissah Publishing resmi?',
-    a: 'Ya, 100% resmi. Setiap buku yang diterbitkan oleh Qissah Publishing (PT Qissah Global Nusantara) didaftarkan langsung ke sistem Perpustakaan Nasional Republik Indonesia (Perpusnas RI) dan tercatat di database ISBN nasional.',
-  },
   {
     q: 'Siapa yang memegang hak cipta atas buku yang diterbitkan?',
     a: 'Hak cipta (copyright) naskah sepenuhnya tetap menjadi milik penulis 100%. Qissah Publishing hanya bertindak sebagai penerbit dan pengelola teknis penerbitan.',
