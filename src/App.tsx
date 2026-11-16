@@ -13,7 +13,7 @@ import {
 } from './data/publishingData';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { BookCover, HeroBookPlate, BarcodeSvg } from './components/BookCover';
+import { BookCover, HeroBookPlate } from './components/BookCover';
 import { CostCalculator } from './components/CostCalculator';
 import { ConsultationModal } from './components/ConsultationModal';
 import { CartDrawer, CartItem } from './components/CartDrawer';
@@ -971,18 +971,10 @@ export default function App() {
               {/* Main Product Card */}
               <div className="bg-white border-2 border-emerald-950 shadow-[6px_6px_0_#0A2A22] p-6 sm:p-10">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-                  {/* Left Column: Big Cover & Barcode Plate */}
+                  {/* Left Column: Big Cover */}
                   <div className="lg:col-span-5 flex flex-col items-center">
                     <div className="bg-[#F2F7F4] p-6 border-2 border-emerald-950 shadow-[4px_4px_0_#0A2A22] w-full flex flex-col items-center">
                       <BookCover book={currentBook} width={260} height={370} />
-
-                      {/* Barcode plate */}
-                      <div className="mt-6 w-full pt-4 border-t border-emerald-900/10 flex flex-col items-center">
-                        <BarcodeSvg isbn={currentBook.isbn} width={220} height={70} />
-                        <span className="text-[11px] font-mono text-emerald-700 mt-2">
-                          Barcode Produk Buku
-                        </span>
-                      </div>
                     </div>
 
                     <div className="mt-4 text-center">
