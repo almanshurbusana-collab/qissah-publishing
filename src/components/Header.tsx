@@ -63,7 +63,7 @@ export const Header: React.FC<HeaderProps> = ({
                 : 'text-emerald-900 hover:text-emerald-700 hover:bg-emerald-100/40'
             }`}
           >
-            Toko Buku
+            Katalog Buku
           </button>
           <button
             onClick={() => handleNavClick('kalkulator')}
@@ -83,7 +83,7 @@ export const Header: React.FC<HeaderProps> = ({
                 : 'text-emerald-900 hover:text-emerald-700 hover:bg-emerald-100/40'
             }`}
           >
-            Tentang Kami &amp; Legalitas
+            Tentang Kami
           </button>
         </nav>
 
@@ -149,7 +149,7 @@ export const Header: React.FC<HeaderProps> = ({
             }`}
           >
             <BookOpen className="w-4 h-4" />
-            <span>Toko Buku (Katalog Lengkap)</span>
+            <span>Katalog Buku</span>
           </button>
           <button
             type="button"
@@ -173,7 +173,7 @@ export const Header: React.FC<HeaderProps> = ({
             }`}
           >
             <Info className="w-4 h-4" />
-            <span>Profil Penerbit &amp; Legalitas KBLI 58110</span>
+            <span>Tentang Kami</span>
           </button>
         </div>
       )}

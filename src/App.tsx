@@ -62,12 +62,36 @@ export default function App() {
   // Book detail purchase quantity
   const [detailQty, setDetailQty] = useState(1);
 
-  // Handle Hash routing for shareable links
+  // Handle Path and Hash routing for clean shareable links without #
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '');
-      if (hash.startsWith('buku-')) {
-        const bId = hash.replace('buku-', '');
+    const handleLocationChange = () => {
+      // Backward compatibility: If an old link with hash is opened, convert it to clean path
+      if (window.location.hash) {
+        const hash = window.location.hash.replace('#', '').replace(/^\/+/, '');
+        if (hash.startsWith('buku-') || hash.startsWith('buku/')) {
+          const bId = hash.replace('buku-', '').replace('buku/', '');
+          if (BOOKS.some((b) => b.id === bId)) {
+            setSelectedBookId(bId);
+            setActiveTab('buku');
+            window.history.replaceState(null, '', `/buku/${bId}`);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+          }
+        }
+        if (['tentang-kami', 'katalog-buku', 'toko-buku', 'kalkulator', 'home'].includes(hash)) {
+          const targetTab = (hash === 'katalog-buku' || hash === 'toko-buku') ? 'toko-buku' : hash === 'home' ? 'home' : hash;
+          setActiveTab(targetTab as any);
+          const targetPath = hash === 'home' ? '/' : hash === 'toko-buku' ? '/katalog-buku' : `/${hash}`;
+          window.history.replaceState(null, '', targetPath);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+      }
+
+      // Read clean pathname
+      const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+      if (path.startsWith('buku/')) {
+        const bId = path.replace('buku/', '');
         if (BOOKS.some((b) => b.id === bId)) {
           setSelectedBookId(bId);
           setActiveTab('buku');
@@ -75,27 +99,59 @@ export default function App() {
           return;
         }
       }
-      if (['home', 'toko-buku', 'kalkulator', 'tentang-kami'].includes(hash)) {
-        setActiveTab(hash as any);
+      if (path === 'tentang-kami') {
+        setActiveTab('tentang-kami');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      if (path === 'katalog-buku' || path === 'toko-buku') {
+        setActiveTab('toko-buku');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      if (path === 'kalkulator') {
+        setActiveTab('kalkulator');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      if (path === '' || path === 'home') {
+        setActiveTab('home');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
       }
     };
 
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    handleLocationChange();
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
   }, []);
 
   const navigateTo = (tab: string, bookId?: string) => {
+    let targetPath = '/';
     if (tab === 'buku' && bookId) {
       setSelectedBookId(bookId);
-      window.location.hash = `buku-${bookId}`;
+      targetPath = `/buku/${bookId}`;
       setDetailQty(1);
+    } else if (tab === 'toko-buku' || tab === 'katalog-buku') {
+      targetPath = '/katalog-buku';
+    } else if (tab === 'kalkulator') {
+      targetPath = '/kalkulator';
+    } else if (tab === 'tentang-kami') {
+      targetPath = '/tentang-kami';
     } else {
-      window.location.hash = tab;
+      targetPath = '/';
     }
+
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState(null, '', targetPath);
+    }
+
     if (['home', 'toko-buku', 'kalkulator', 'tentang-kami', 'buku'].includes(tab)) {
-      setActiveTab(tab as any);
+      setActiveTab((tab === 'katalog-buku' ? 'toko-buku' : tab) as any);
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -531,7 +587,7 @@ export default function App() {
                     onClick={() => navigateTo('toko-buku')}
                     className="text-xs font-mono font-bold text-emerald-900 hover:text-emerald-700 underline underline-offset-4 flex items-center gap-1 cursor-pointer self-start md:self-auto"
                   >
-                    Lihat Semua di Toko Buku ({BOOKS.length} Judul) →
+                    Lihat Semua di Katalog Buku ({BOOKS.length} Judul) →
                   </button>
                 </div>
 
@@ -718,7 +774,7 @@ export default function App() {
                   Katalog Terbitan Resmi
                 </span>
                 <h1 className="font-serif text-3xl sm:text-4xl text-emerald-950 font-bold mt-2">
-                  Toko Buku Qissah Publishing
+                  Katalog Buku Qissah
                 </h1>
                 <p className="mt-2 text-emerald-800 text-sm max-w-2xl">
                   Buku karya sastra, monograf akademik, kajian sains, dan antologi berkualitas pilihan. Siap dikirim ke seluruh Indonesia.
@@ -901,10 +957,10 @@ export default function App() {
                 <span>/</span>
                 <button
                   type="button"
-                  onClick={() => navigateTo('toko-buku')}
+                  onClick={() => navigateTo('katalog-buku')}
                   className="hover:underline cursor-pointer"
                 >
-                  Toko Buku
+                  Katalog Buku
                 </button>
                 <span>/</span>
                 <span className="text-emerald-950 font-bold truncate max-w-xs sm:max-w-md">

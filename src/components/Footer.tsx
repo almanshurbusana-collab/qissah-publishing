@@ -116,7 +116,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigate('toko-buku')}
                   className="text-emerald-200 hover:text-white transition-colors cursor-pointer"
                 >
-                  Katalog Toko Buku
+                  Katalog Buku
                 </button>
               </li>
               <li>
@@ -134,7 +134,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigate('tentang-kami')}
                   className="text-emerald-200 hover:text-white transition-colors cursor-pointer"
                 >
-                  Profil & Legalitas Penerbit
+                  Tentang Kami
                 </button>
               </li>
               <li>
