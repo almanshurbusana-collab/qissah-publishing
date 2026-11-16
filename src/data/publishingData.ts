@@ -69,7 +69,7 @@ export function formatRp(amount: number): string {
   return 'Rp ' + amount.toLocaleString('id-ID');
 }
 
-// EAN-13 calculation for ISBN barcode
+// EAN-13 calculation
 const L_PATTERNS = ['0001101', '0011001', '0010011', '0111101', '0100011', '0110001', '0101111', '0111011', '0110111', '0001011'];
 const G_PATTERNS = ['0100111', '0110011', '0011011', '0100001', '0011101', '0111001', '0000101', '0010001', '0001001', '0010111'];
 const R_PATTERNS = ['1110010', '1100110', '1101100', '1000010', '1011100', '1001110', '1010000', '1000100', '1001000', '1110100'];
@@ -135,7 +135,6 @@ export const PLANS: Plan[] = [
     description: 'Cocok bagi Anda yang sudah memiliki naskah rapi dan ingin menerbitkan buku berkualitas dengan biaya paling hemat.',
     features: [
       'Pengurusan penerbitan buku resmi dan berstandar',
-      'Barcode standar penerbitan di sampul',
       'Desain sampul standar profesional',
       'Layout isi buku hingga 100 halaman',
       'File master siap cetak (PDF resolusi tinggi)',

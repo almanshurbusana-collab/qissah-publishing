@@ -274,7 +274,7 @@ export const BarcodeSvg: React.FC<{
       height={height}
       viewBox={`0 0 ${width} ${height}`}
       className={`bg-white p-1 rounded-sm border border-slate-300 shadow-sm ${className}`}
-      aria-label={`Barcode Buku ${f}`}
+      aria-label={`Kode Buku ${f}`}
     >
       <rect width={width} height={height} fill="#ffffff" />
       <g fill="#111111">
@@ -299,31 +299,6 @@ export const HeroBookPlate: React.FC<{ minPrice?: number; onInspect?: () => void
   minPrice = 450000,
   onInspect,
 }) => {
-  const ean = calculateEan13('978623000099');
-  const u = 104 / 111;
-  const bx = 196 + 9 * u;
-  const bh = 74 - 18;
-  const n = ean.bits.length;
-
-  const rects: { x: number; w: number }[] = [];
-  let i = 0;
-  while (i < n) {
-    if (ean.bits[i] === '1') {
-      let j = i;
-      while (j < n && ean.bits[j] === '1') j++;
-      rects.push({
-        x: bx + i * u,
-        w: (j - i) * u,
-      });
-      i = j;
-    } else {
-      i++;
-    }
-  }
-
-  const ty = 334 + 74 - 3;
-  const f = ean.full;
-
   return (
     <figure
       className="hero-art relative max-w-[420px] w-full mx-auto cursor-pointer group select-none"
@@ -342,7 +317,7 @@ export const HeroBookPlate: React.FC<{ minPrice?: number; onInspect?: () => void
             className="hero-book w-full h-auto block -rotate-3 transition-transform duration-300 group-hover:rotate-0 drop-shadow-[10px_16px_20px_rgba(0,0,0,0.65)]"
             viewBox="0 0 320 440"
             role="img"
-            aria-label="Contoh sampul buku dengan barcode"
+            aria-label="Contoh sampul buku"
             xmlns="http://www.w3.org/2000/svg"
           >
             <rect width="320" height="440" fill="#0A7B5B" />
@@ -364,23 +339,6 @@ export const HeroBookPlate: React.FC<{ minPrice?: number; onInspect?: () => void
             <text x="46" y="308" fontFamily="IBM Plex Mono, monospace" fontSize="11" letterSpacing="1.6" fill="rgba(255,255,255,.88)">
               NAMA PENULIS
             </text>
-            <g>
-              <rect x="196" y="334" width="104" height="74" fill="#fff" />
-              <g fill="#111">
-                {rects.map((r, idx) => (
-                  <rect key={idx} x={r.x.toFixed(2)} y={334 + 6} width={r.w.toFixed(2)} height={bh} />
-                ))}
-              </g>
-              <g fill="#111" fontFamily="IBM Plex Mono, monospace" fontSize="8.5">
-                <text x={(196 + 1.5 * u).toFixed(2)} y={ty}>{f[0]}</text>
-                <text x={(bx + 3 * u).toFixed(2)} y={ty} textLength={(42 * u).toFixed(2)} lengthAdjust="spacing">
-                  {f.slice(1, 7)}
-                </text>
-                <text x={(bx + 50 * u).toFixed(2)} y={ty} textLength={(42 * u).toFixed(2)} lengthAdjust="spacing">
-                  {f.slice(7)}
-                </text>
-              </g>
-            </g>
           </svg>
         </div>
 
@@ -391,7 +349,7 @@ export const HeroBookPlate: React.FC<{ minPrice?: number; onInspect?: () => void
         </div>
       </div>
       <figcaption className="text-center font-mono text-xs text-emerald-300/80 mt-3 tracking-wider flex items-center justify-center gap-1.5">
-        <span>Pratinjau Cetak: Buku Standar Percetakan &amp; Barcode</span>
+        <span>Pratinjau Cetak: Buku Standar Percetakan</span>
         <span className="text-amber-400 group-hover:translate-x-1 transition-transform">→</span>
       </figcaption>
     </figure>
