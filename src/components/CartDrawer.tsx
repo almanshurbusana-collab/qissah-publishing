@@ -49,7 +49,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
       .map((item, idx) => `${idx + 1}. ${item.book.title} (x${item.quantity}) = ${formatRp(item.book.price * item.quantity)}`)
       .join('\n');
 
-    const msg = `Halo Qissah Publishing, saya ingin memesan buku berikut melalui Katalog Buku:
+    const msg = `Halo PT. Qissah Global Nusantara, saya ingin memesan buku berikut melalui Katalog Buku:
 
 ${listText}
 
@@ -91,7 +91,7 @@ Mohon informasi ketersediaan stok, alamat tujuan pengiriman, dan nomor rekening 
               </div>
               <h3 className="font-display text-lg text-[#0A2A22]">Keranjang Masih Kosong</h3>
               <p className="text-xs mt-1 max-w-xs mx-auto">
-                Pilih buku terbitan Qissah Publishing di Katalog Buku untuk menambahkannya ke pesanan Anda.
+                Pilih buku terbitan PT. Qissah Global Nusantara di Katalog Buku untuk menambahkannya ke pesanan Anda.
               </p>
             </div>
           ) : (

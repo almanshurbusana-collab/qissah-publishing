@@ -42,8 +42,8 @@ export const BookCover: React.FC<BookCoverProps> = ({
             ))}
             {/* Regression trend line */}
             <path d="M24 392 L296 252" stroke="#F5CB45" strokeWidth="3.5" fill="none" strokeLinecap="round" />
-            <text x="28" y="36" fontFamily="IBM Plex Mono, monospace" fontSize="9" letterSpacing="2" fill="rgba(255,255,255,0.75)">
-              QISSAH PUBLISHING
+            <text x="28" y="36" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" letterSpacing="1" fill="rgba(255,255,255,0.75)">
+              PT. QISSAH GLOBAL NUSANTARA
             </text>
             <text fontFamily="Gloock, Georgia, serif" fontSize="35" fill="#FFFFFF">
               <tspan x="28" y="84">Metodologi</tspan>
@@ -63,8 +63,8 @@ export const BookCover: React.FC<BookCoverProps> = ({
         return (
           <g>
             <rect width="300" height="420" fill="#F5CB45" />
-            <text x="28" y="36" fontFamily="IBM Plex Mono, monospace" fontSize="9" letterSpacing="2" fill="rgba(10,42,34,0.7)">
-              QISSAH PUBLISHING
+            <text x="28" y="36" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" letterSpacing="1" fill="rgba(10,42,34,0.7)">
+              PT. QISSAH GLOBAL NUSANTARA
             </text>
             <text fontFamily="Gloock, Georgia, serif" fontSize="37" fill="#0A2A22">
               <tspan x="28" y="84">Guru</tspan>
@@ -88,8 +88,8 @@ export const BookCover: React.FC<BookCoverProps> = ({
         return (
           <g>
             <rect width="300" height="420" fill="#0A2A22" />
-            <text x="28" y="36" fontFamily="IBM Plex Mono, monospace" fontSize="9" letterSpacing="2" fill="rgba(234,245,239,0.7)">
-              QISSAH PUBLISHING
+            <text x="28" y="36" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" letterSpacing="1" fill="rgba(234,245,239,0.7)">
+              PT. QISSAH GLOBAL NUSANTARA
             </text>
             <text fontFamily="Gloock, Georgia, serif" fontSize="39" fill="#E8F4EE">
               <tspan x="28" y="86">Kisah dari</tspan>
@@ -120,8 +120,8 @@ export const BookCover: React.FC<BookCoverProps> = ({
         return (
           <g>
             <rect width="300" height="420" fill="#E3F1EA" />
-            <text x="28" y="36" fontFamily="IBM Plex Mono, monospace" fontSize="9" letterSpacing="2" fill="rgba(10,42,34,0.7)">
-              QISSAH PUBLISHING
+            <text x="28" y="36" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" letterSpacing="1" fill="rgba(10,42,34,0.7)">
+              PT. QISSAH GLOBAL NUSANTARA
             </text>
             <text fontFamily="Gloock, Georgia, serif" fontSize="39" fill="#0A2A22">
               <tspan x="28" y="86">Menulis</tspan>
@@ -150,8 +150,8 @@ export const BookCover: React.FC<BookCoverProps> = ({
         return (
           <g>
             <rect width="300" height="420" fill="#063E32" />
-            <text x="28" y="36" fontFamily="IBM Plex Mono, monospace" fontSize="9" letterSpacing="2" fill="rgba(245,203,69,0.85)">
-              QISSAH PUBLISHING
+            <text x="28" y="36" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" letterSpacing="1" fill="rgba(245,203,69,0.85)">
+              PT. QISSAH GLOBAL NUSANTARA
             </text>
             <text fontFamily="Gloock, Georgia, serif" fontSize="33" fill="#FFFFFF">
               <tspan x="28" y="84">Fiqih</tspan>
@@ -180,8 +180,8 @@ export const BookCover: React.FC<BookCoverProps> = ({
         return (
           <g>
             <rect width="300" height="420" fill="#14362E" />
-            <text x="28" y="36" fontFamily="IBM Plex Mono, monospace" fontSize="9" letterSpacing="2" fill="rgba(234,245,239,0.7)">
-              QISSAH PUBLISHING
+            <text x="28" y="36" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" letterSpacing="1" fill="rgba(234,245,239,0.7)">
+              PT. QISSAH GLOBAL NUSANTARA
             </text>
             <text fontFamily="Gloock, Georgia, serif" fontSize="35" fill="#E8F4EE">
               <tspan x="28" y="86">Kidung</tspan>
@@ -327,8 +327,8 @@ export const HeroBookPlate: React.FC<{ minPrice?: number; onInspect?: () => void
               <circle cx="236" cy="152" r="78" />
               <path d="M266 206l40 52" />
             </g>
-            <text x="46" y="48" fontFamily="IBM Plex Mono, monospace" fontSize="10" letterSpacing="2.4" fill="rgba(255,255,255,.8)">
-              QISSAH PUBLISHING
+            <text x="46" y="48" fontFamily="IBM Plex Mono, monospace" fontSize="8" letterSpacing="1.2" fill="rgba(255,255,255,.8)">
+              PT. QISSAH GLOBAL NUSANTARA
             </text>
             <text fontFamily="'Gloock', Georgia, serif" fontSize="62" fill="#fff">
               <tspan x="44" y="136">Naskah</tspan>

@@ -1,5 +1,5 @@
 /**
- * Data and constants for Qissah Publishing
+ * Data and constants for PT. Qissah Global Nusantara
  * Penerbit buku di Bogor (PT Qissah Global Nusantara)
  */
 
@@ -43,8 +43,8 @@ export interface Book {
 }
 
 export const COMPANY = {
-  name: 'Qissah Publishing',
-  legalName: 'PT Qissah Global Nusantara',
+  name: 'PT. Qissah Global Nusantara',
+  legalName: 'PT. Qissah Global Nusantara',
   tagline: 'Penerbit Buku Berkualitas · Bogor',
   shortDesc: 'Penerbitan buku murah, berkualitas, dan legal untuk dosen, mahasiswa, guru, penulis, dan masyarakat umum.',
   address: 'Jl. Raya Cifor, RT.01/RW.07, Kelurahan Bubulak, Kecamatan Bogor Barat, Kota Bogor, Jawa Barat 16115',
@@ -57,7 +57,7 @@ export const COMPANY = {
   legalImgUrl: '/images/legal-certificate.webp',
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Jl.+Raya+Cifor,+RT.01/RW.07,+Kelurahan+Bubulak,+Kecamatan+Bogor+Barat,+Kota+Bogor,+Jawa+Barat+16115',
   googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Jl.+Raya+Cifor,+RT.01/RW.07,+Kelurahan+Bubulak,+Kecamatan+Bogor+Barat,+Kota+Bogor,+Jawa+Barat+16115',
-  waConsultUrl: 'https://wa.me/628164252777?text=Halo%20Redaksi%20Qissah%20Publishing%2C%20saya%20ingin%20berkonsultasi%20mengenai%20penerbitan%20naskah%20buku.',
+  waConsultUrl: 'https://wa.me/628164252777?text=Halo%20Redaksi%20PT.%20Qissah%20Global%20Nusantara%2C%20saya%20ingin%20berkonsultasi%20mengenai%20penerbitan%20naskah%20buku.',
 };
 
 // Helper for WhatsApp link
@@ -141,7 +141,7 @@ export const PLANS: Plan[] = [
       'Konsultasi intensif via WhatsApp',
       'Sertifikat tanda terbit buku',
     ],
-    waUrl: buildWaUrl('Halo Qissah Publishing, saya tertarik memilih *Paket Mandiri (Rp 450.000)*. Naskah saya sudah siap untuk diproses penerbitannya.'),
+    waUrl: buildWaUrl('Halo PT. Qissah Global Nusantara, saya tertarik memilih *Paket Mandiri (Rp 450.000)*. Naskah saya sudah siap untuk diproses penerbitannya.'),
   },
   {
     id: 'reguler',
@@ -162,9 +162,9 @@ export const PLANS: Plan[] = [
       'Cetak buku fisik 10 eksemplar (Bookpaper/HVS)',
       'Finishing cover laminasi Doff / Glossy',
       'Revisi desain hingga 2 kali',
-      'Dipajang di katalog Toko Buku Qissah',
+      'Dipajang di Katalog Buku PT. Qissah Global Nusantara',
     ],
-    waUrl: buildWaUrl('Halo Qissah Publishing, saya tertarik memilih *Paket Reguler (Rp 950.000)* yang paling populer. Mohon info teknis pengiriman naskahnya.'),
+    waUrl: buildWaUrl('Halo PT. Qissah Global Nusantara, saya tertarik memilih *Paket Reguler (Rp 950.000)* yang paling populer. Mohon info teknis pengiriman naskahnya.'),
   },
   {
     id: 'lengkap',
@@ -183,11 +183,11 @@ export const PLANS: Plan[] = [
       'Desain sampul premium dengan mockup 3D',
       'Cetak buku fisik 50 eksemplar',
       'Revisi desain hingga 3 kali',
-      'Buku dipajang & dipasarkan di Toko Buku Qissah',
+      'Buku dipajang & dipasarkan di Katalog Buku PT. Qissah Global Nusantara',
       'Banner & e-flyer promosi buku untuk media sosial',
       'Pendampingan penuh dari naskah mentah sampai terbit',
     ],
-    waUrl: buildWaUrl('Halo Qissah Publishing, saya tertarik memilih *Paket Lengkap (Rp 1.850.000)* termasuk cetak 50 eksemplar dan copy-editing menyeluruh.'),
+    waUrl: buildWaUrl('Halo PT. Qissah Global Nusantara, saya tertarik memilih *Paket Lengkap (Rp 1.850.000)* termasuk cetak 50 eksemplar dan copy-editing menyeluruh.'),
   },
 ];
 
@@ -201,7 +201,7 @@ export const BOOKS: Book[] = [
     price: 85000,
     pages: 'vi; 214',
     editor: 'Hendra Wijaya, M.Pd.',
-    layout: 'Tim Qissah Publishing',
+    layout: 'Tim PT. Qissah Global Nusantara',
     size: '15,5 × 23 cm',
     dimensions: '15,5 × 23 cm (UNESCO)',
     paper: 'Bookpaper Premium 72 gsm',
@@ -229,7 +229,7 @@ export const BOOKS: Book[] = [
     price: 69000,
     pages: 'vi; 168',
     editor: 'Laila Fitriani, M.Pd.',
-    layout: 'Tim Qissah Publishing',
+    layout: 'Tim PT. Qissah Global Nusantara',
     size: '14 × 21 cm',
     dimensions: '14 × 21 cm (A5 Standar)',
     paper: 'Bookpaper Import 72 gsm',
@@ -257,7 +257,7 @@ export const BOOKS: Book[] = [
     price: 59000,
     pages: 'vi; 132',
     editor: 'Rizky Ramadhan, S.S.',
-    layout: 'Tim Qissah Publishing',
+    layout: 'Tim PT. Qissah Global Nusantara',
     size: '13 × 19 cm',
     dimensions: '13 × 19 cm (Saku Prosa)',
     paper: 'Bookpaper 72 gsm Lembut di Mata',
@@ -285,7 +285,7 @@ export const BOOKS: Book[] = [
     price: 75000,
     pages: 'vi; 176',
     editor: 'Bagus Setiawan, M.Hum.',
-    layout: 'Tim Qissah Publishing',
+    layout: 'Tim PT. Qissah Global Nusantara',
     size: '14 × 21 cm',
     dimensions: '14 × 21 cm (A5 Standar)',
     paper: 'Bookpaper Premium 72 gsm',
@@ -313,7 +313,7 @@ export const BOOKS: Book[] = [
     price: 88000,
     pages: 'viii; 248',
     editor: 'Tim Akademik Qissah',
-    layout: 'Tim Qissah Publishing',
+    layout: 'Tim PT. Qissah Global Nusantara',
     size: '15,5 × 23 cm',
     dimensions: '15,5 × 23 cm (UNESCO)',
     paper: 'HVS Premium 70 gsm White Clean',
@@ -341,7 +341,7 @@ export const BOOKS: Book[] = [
     price: 52000,
     pages: 'iv; 118',
     editor: 'Rizky Ramadhan, S.S.',
-    layout: 'Tim Qissah Publishing',
+    layout: 'Tim PT. Qissah Global Nusantara',
     size: '13 × 19 cm',
     dimensions: '13 × 19 cm (Saku Prosa)',
     paper: 'Bookpaper Import 72 gsm',
@@ -407,9 +407,9 @@ export const ADVANTAGES = [
     id: 'shop',
     badge: '06',
     icon: 'shop',
-    title: 'Bisa Dijual di Toko Buku Qissah',
-    desc: 'Karya Anda berkesempatan dipajang di etalase Toko Buku Qissah Publishing sehingga mudah dipesan langsung oleh pembaca di seluruh Indonesia.',
-    description: 'Karya Anda berkesempatan dipajang di etalase Toko Buku Qissah Publishing sehingga mudah dipesan langsung oleh pembaca di seluruh Indonesia.',
+    title: 'Bisa Dijual di Katalog Buku Kami',
+    desc: 'Karya Anda berkesempatan dipajang di etalase Katalog Buku PT. Qissah Global Nusantara sehingga mudah dipesan langsung oleh pembaca di seluruh Indonesia.',
+    description: 'Karya Anda berkesempatan dipajang di etalase Katalog Buku PT. Qissah Global Nusantara sehingga mudah dipesan langsung oleh pembaca di seluruh Indonesia.',
   },
 ];
 
@@ -458,7 +458,7 @@ export const TESTIMONIALS = [
     name: 'Dr. Rina Kartika, M.Pd.',
     role: 'Dosen Universitas Pakuan Bogor',
     bookTitle: 'Metodologi Penelitian Kuantitatif untuk Pemula',
-    quote: 'Proses penerbitan buku ajar saya di Qissah Publishing sangat cepat dan transparan. Pengerjaan lancar, layout rapi, dan admin sangat kooperatif saat revisi.',
+    quote: 'Proses penerbitan buku ajar saya di PT. Qissah Global Nusantara sangat cepat dan transparan. Pengerjaan lancar, layout rapi, dan admin sangat kooperatif saat revisi.',
   },
   {
     id: 't-nanda',
@@ -466,7 +466,7 @@ export const TESTIMONIALS = [
     name: 'Nanda Prasetyo, S.Pd.',
     role: 'Guru & Penulis Buku Pendidikan',
     bookTitle: 'Guru Penggerak di Ruang Kelas',
-    quote: 'Saya sempat ragu karena naskah saya baru draf mentah. Tapi tim Qissah mendampingi dari penataan bab sampai desain sampul yang sesuai dengan visi saya.',
+    quote: 'Saya sempat ragu karena naskah saya baru draf mentah. Tapi tim PT. Qissah Global Nusantara mendampingi dari penataan bab sampai desain sampul yang sesuai dengan visi saya.',
   },
   {
     id: 't-salma',
@@ -481,7 +481,7 @@ export const TESTIMONIALS = [
 export const FAQS = [
   {
     q: 'Siapa yang memegang hak cipta atas buku yang diterbitkan?',
-    a: 'Hak cipta (copyright) naskah sepenuhnya tetap menjadi milik penulis 100%. Qissah Publishing hanya bertindak sebagai penerbit dan pengelola teknis penerbitan.',
+    a: 'Hak cipta (copyright) naskah sepenuhnya tetap menjadi milik penulis 100%. PT. Qissah Global Nusantara hanya bertindak sebagai penerbit dan pengelola teknis penerbitan.',
   },
   {
     q: 'Berapa lama proses dari kirim naskah sampai buku terbit?',
@@ -489,10 +489,10 @@ export const FAQS = [
   },
   {
     q: 'Bolehkah mencetak buku dalam jumlah sedikit (misal 5 atau 10 eksemplar)?',
-    a: 'Sangat boleh! Qissah Publishing menggunakan teknologi cetak digital Print-on-Demand (POD) mutakhir, sehingga Anda tidak diwajibkan mencetak ratusan eksemplar seperti di penerbit konvensional.',
+    a: 'Sangat boleh! PT. Qissah Global Nusantara menggunakan teknologi cetak digital Print-on-Demand (POD) mutakhir, sehingga Anda tidak diwajibkan mencetak ratusan eksemplar seperti di penerbit konvensional.',
   },
   {
     q: 'Apakah buku hasil terbitan bisa dijual ke publik?',
-    a: 'Bisa. Buku Anda sudah memiliki legalitas resmi sehingga sah untuk diedarkan secara komersial. Kami juga menyediakan etalase Toko Buku Qissah di website ini untuk memudahkan calon pembaca Anda.',
+    a: 'Bisa. Buku Anda sudah memiliki legalitas resmi sehingga sah untuk diedarkan secara komersial. Kami juga menyediakan etalase Katalog Buku PT. Qissah Global Nusantara di website ini untuk memudahkan calon pembaca Anda.',
   },
 ];

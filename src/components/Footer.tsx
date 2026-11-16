@@ -29,7 +29,7 @@ export const Footer: React.FC<FooterProps> = ({
                 Punya draf naskah yang siap diterbitkan?
               </h2>
               <p className="mt-2 text-sm text-emerald-200">
-                Diskusikan format, estimasi biaya cetak, dan alur penerbitan buku bersama tim editorial Qissah.
+                Diskusikan format, estimasi biaya cetak, dan alur penerbitan buku bersama tim editorial PT. Qissah Global Nusantara.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
@@ -63,7 +63,7 @@ export const Footer: React.FC<FooterProps> = ({
             <div className="flex items-center gap-3">
               <img
                 src={COMPANY.logoUrl}
-                alt="Logo Qissah Publishing"
+                alt="Logo PT. Qissah Global Nusantara"
                 className="h-10 w-auto bg-white/95 p-1 rounded-sm border border-emerald-700"
                 onError={(e) => {
                   (e.currentTarget as HTMLElement).style.display = 'none';
@@ -71,10 +71,10 @@ export const Footer: React.FC<FooterProps> = ({
               />
               <div>
                 <span className="font-serif text-xl font-bold tracking-tight text-white block">
-                  Qissah Publishing
+                  PT. Qissah Global Nusantara
                 </span>
                 <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400 block">
-                  {COMPANY.legalName}
+                  Penerbit Buku Berkualitas
                 </span>
               </div>
             </div>

@@ -40,7 +40,7 @@ export const CostCalculator: React.FC<CostCalculatorProps> = ({ onOpenConsultati
 
   const totalEstimatedCost = baseCost + extraPageCost + printCopiesCost + copyEditingCost + promoMockupCost + expressLayoutCost;
 
-  const consultationMessage = `Halo Qissah Publishing, saya telah melakukan simulasi biaya penerbitan:
+  const consultationMessage = `Halo PT. Qissah Global Nusantara, saya telah melakukan simulasi biaya penerbitan:
 - Pilihan Paket: ${activePlan.name} (${formatRp(activePlan.price)})
 - Estimasi Halaman: ${pageCount} halaman (${extraPages > 0 ? `+${extraPages} hal ekstra: ${formatRp(extraPageCost)}` : 'sesuai paket'})
 - Target Cetak: ${printCopies} eksemplar (${extraCopies > 0 ? `+${extraCopies} eks ekstra: ${formatRp(printCopiesCost)}` : 'termasuk paket'})
@@ -341,7 +341,7 @@ Mohon konfirmasi dan info tahapan pengiriman naskahnya. Terima kasih!`;
               </button>
             )}
             <p className="text-center text-[10px] text-[#46605A] font-mono">
-              Admin Qissah Publishing siap merespons setiap hari kerja
+              Admin PT. Qissah Global Nusantara siap merespons setiap hari kerja
             </p>
           </div>
         </div>

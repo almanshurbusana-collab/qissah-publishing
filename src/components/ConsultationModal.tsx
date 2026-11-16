@@ -35,7 +35,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const msg = `Halo Admin Qissah Publishing, saya ingin konsultasi penerbitan buku:
+    const msg = `Halo Admin PT. Qissah Global Nusantara, saya ingin konsultasi penerbitan buku:
 - Nama Penulis: ${name || 'Penulis'}
 - Kategori/Profesi: ${role}
 - Rencana Judul: ${bookTitle || 'Belum ada judul pasti'}
@@ -74,7 +74,7 @@ Mohon arahan langkah selanjutnya dan teknis pengiriman naskahnya. Terima kasih!`
             Ceritakan Naskah Anda
           </h2>
           <p className="text-xs text-[#46605A] mt-1">
-            Isi formulir ringkas di bawah. Tim Qissah Publishing akan menghubungkan Anda langsung via WhatsApp dengan pesan yang sudah terformat rapi.
+            Isi formulir ringkas di bawah. Tim PT. Qissah Global Nusantara akan menghubungkan Anda langsung via WhatsApp dengan pesan yang sudah terformat rapi.
           </p>
         </div>
 

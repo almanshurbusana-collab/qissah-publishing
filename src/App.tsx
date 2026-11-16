@@ -230,7 +230,7 @@ export default function App() {
   // Direct WhatsApp purchase for detail view
   const handleDirectBuyWA = (book: Book, qty: number) => {
     const total = book.price * qty;
-    const msg = `Halo Redaksi Qissah Publishing, saya ingin memesan buku berikut:\n\n*Judul:* ${book.title}\n*Penulis:* ${book.author}\n*Jumlah:* ${qty} eksemplar\n*Total Harga Buku:* Rp ${total.toLocaleString('id-ID')}\n\nMohon info ketersediaan stok fisik dan estimasi ongkir ke alamat saya. Terima kasih!`;
+    const msg = `Halo Redaksi PT. Qissah Global Nusantara, saya ingin memesan buku berikut:\n\n*Judul:* ${book.title}\n*Penulis:* ${book.author}\n*Jumlah:* ${qty} eksemplar\n*Total Harga Buku:* Rp ${total.toLocaleString('id-ID')}\n\nMohon info ketersediaan stok fisik dan estimasi ongkir ke alamat saya. Terima kasih!`;
     const url = `https://wa.me/${COMPANY.waNumber}?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };

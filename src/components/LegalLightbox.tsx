@@ -29,7 +29,7 @@ export const LegalLightbox: React.FC<LegalLightboxProps> = ({ isOpen, onClose })
     <div
       role="dialog"
       aria-modal="true"
-      aria-label="Legalitas Penerbit Qissah Publishing"
+      aria-label="Legalitas Penerbit PT. Qissah Global Nusantara"
       className="fixed inset-0 z-50 flex flex-col bg-[#05140F]/95 p-4 sm:p-6 backdrop-blur-md"
     >
       {/* Top Bar */}
