@@ -183,7 +183,7 @@ Mohon arahan langkah selanjutnya dan teknis pengiriman naskahnya. Terima kasih!`
             </label>
             <textarea
               rows={3}
-              placeholder="Misal: Apakah ada bantuan editing? Berapa lama ISBN terbit?"
+              placeholder="Misal: Apakah ada bantuan editing? Berapa lama proses pengerjaan buku?"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               className="w-full p-2.5 bg-white border-2 border-[#0A2A22] text-[#0A2A22] placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-[#0A7B5B]"

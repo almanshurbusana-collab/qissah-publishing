@@ -1,6 +1,6 @@
 /**
  * Data and constants for Qissah Publishing
- * Penerbit buku ber-ISBN di Bogor (PT Qissah Global Nusantara)
+ * Penerbit buku di Bogor (PT Qissah Global Nusantara)
  */
 
 export interface Plan {
@@ -45,7 +45,7 @@ export interface Book {
 export const COMPANY = {
   name: 'Qissah Publishing',
   legalName: 'PT Qissah Global Nusantara',
-  tagline: 'Penerbit Buku Ber-ISBN · Bogor',
+  tagline: 'Penerbit Buku Berkualitas · Bogor',
   shortDesc: 'Penerbitan buku murah, berkualitas, dan legal untuk dosen, mahasiswa, guru, penulis, dan masyarakat umum.',
   address: 'Jl. Raya Cifor, RT.01/RW.07, Kelurahan Bubulak, Kecamatan Bogor Barat, Kota Bogor, Jawa Barat 16115',
   phone: '0816-4252-777',
@@ -57,7 +57,7 @@ export const COMPANY = {
   legalImgUrl: '/images/legal-certificate.webp',
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Jl.+Raya+Cifor,+RT.01/RW.07,+Kelurahan+Bubulak,+Kecamatan+Bogor+Barat,+Kota+Bogor,+Jawa+Barat+16115',
   googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Jl.+Raya+Cifor,+RT.01/RW.07,+Kelurahan+Bubulak,+Kecamatan+Bogor+Barat,+Kota+Bogor,+Jawa+Barat+16115',
-  waConsultUrl: 'https://wa.me/628164252777?text=Halo%20Redaksi%20Qissah%20Publishing%2C%20saya%20ingin%20berkonsultasi%20mengenai%20penerbitan%20naskah%20buku%20ber-ISBN.',
+  waConsultUrl: 'https://wa.me/628164252777?text=Halo%20Redaksi%20Qissah%20Publishing%2C%20saya%20ingin%20berkonsultasi%20mengenai%20penerbitan%20naskah%20buku.',
 };
 
 // Helper for WhatsApp link
@@ -132,17 +132,17 @@ export const PLANS: Plan[] = [
     featured: false,
     pagesLimit: 100,
     freeCopies: 0,
-    description: 'Cocok bagi Anda yang sudah memiliki naskah rapi dan ingin mengurus legalitas ISBN resmi dengan biaya paling hemat.',
+    description: 'Cocok bagi Anda yang sudah memiliki naskah rapi dan ingin menerbitkan buku berkualitas dengan biaya paling hemat.',
     features: [
-      'Pengurusan ISBN resmi Perpustakaan Nasional RI',
-      'Barcode EAN-13 standar internasional di sampul',
+      'Pengurusan penerbitan buku resmi dan berstandar',
+      'Barcode standar penerbitan di sampul',
       'Desain sampul standar profesional',
       'Layout isi buku hingga 100 halaman',
       'File master siap cetak (PDF resolusi tinggi)',
       'Konsultasi intensif via WhatsApp',
-      'Sertifikat tanda terbit buku ber-ISBN',
+      'Sertifikat tanda terbit buku',
     ],
-    waUrl: buildWaUrl('Halo Qissah Publishing, saya tertarik memilih *Paket Mandiri (Rp 450.000)*. Naskah saya sudah siap untuk diproses ISBN resminya.'),
+    waUrl: buildWaUrl('Halo Qissah Publishing, saya tertarik memilih *Paket Mandiri (Rp 450.000)*. Naskah saya sudah siap untuk diproses penerbitannya.'),
   },
   {
     id: 'reguler',
@@ -156,7 +156,7 @@ export const PLANS: Plan[] = [
     description: 'Pilihan utama para dosen, guru, dan penulis: naskah ditata rapi, sampul disesuaikan konsep Anda, plus cetak 10 eksemplar buku fisik.',
     features: [
       'Semua kelengkapan Paket Mandiri',
-      'Pengurusan ISBN resmi Perpustakaan Nasional RI',
+      'Pengurusan penerbitan buku resmi dan berstandar',
       'Layout isi buku hingga 200 halaman',
       'Desain sampul eksklusif sesuai konsep Anda',
       'Proofreading & pemeriksaan naskah dasar',
@@ -299,7 +299,7 @@ export const BOOKS: Book[] = [
     synopsisParagraphs: [
       'Alasan nomor satu mengapa naskah tak pernah selesai bukanlah ketiadaan bakat, melainkan ketiadaan sistem yang selaras dengan kesibukan sehari-hari.',
       'Aulia Rahmawati membongkar rahasia produktivitas menulis: bagaimana menghasilkan 300 kata bermutu setiap pagi, mengorganisasi riset tanpa tersesat, dan menjaga konsistensi dari halaman judul hingga bab penutup.',
-      'Dilengkapi panduan praktis pengurusan ISBN, anatomi buku standar, dan kiat memilih penerbit yang tepat.',
+      'Dilengkapi panduan praktis penerbitan, anatomi buku standar, dan kiat memilih penerbit yang tepat.',
     ],
     year: 2026,
     publicationYear: 2026,
@@ -439,9 +439,9 @@ export const STEPS = [
   {
     step: '4',
     num: '4',
-    title: 'Revisi, ISBN, & Persetujuan',
-    desc: 'Anda memeriksa draf cetak digital. Kami mengurus pengajuan ISBN ke Perpusnas RI hingga naskah akhir disetujui (final proof).',
-    description: 'Anda memeriksa draf cetak digital. Kami mengurus pengajuan ISBN ke Perpusnas RI hingga naskah akhir disetujui (final proof).',
+    title: 'Revisi & Persetujuan Akhir',
+    desc: 'Anda memeriksa draf cetak digital bersama tim editorial hingga naskah akhir disetujui (final proof).',
+    description: 'Anda memeriksa draf cetak digital bersama tim editorial hingga naskah akhir disetujui (final proof).',
   },
   {
     step: '5',
@@ -459,7 +459,7 @@ export const TESTIMONIALS = [
     name: 'Dr. Rina Kartika, M.Pd.',
     role: 'Dosen Universitas Pakuan Bogor',
     bookTitle: 'Metodologi Penelitian Kuantitatif untuk Pemula',
-    quote: 'Proses penerbitan buku ajar saya di Qissah Publishing sangat cepat dan transparan. Pengurusan ISBN lancar, layout rapi, dan admin sangat kooperatif saat revisi.',
+    quote: 'Proses penerbitan buku ajar saya di Qissah Publishing sangat cepat dan transparan. Pengerjaan lancar, layout rapi, dan admin sangat kooperatif saat revisi.',
   },
   {
     id: 't-nanda',
@@ -475,7 +475,7 @@ export const TESTIMONIALS = [
     name: 'Salma Aulia',
     role: 'Penulis Fiksi & Cerpen',
     bookTitle: 'Kisah dari Tepi Ciliwung',
-    quote: 'Menerbitkan kumpulan cerpen impian saya jadi kenyataan dengan harga yang sangat ramah kantong. Buku fisik hasil cetaknya berkualitas dan ber-ISBN resmi.',
+    quote: 'Menerbitkan kumpulan cerpen impian saya jadi kenyataan dengan harga yang sangat ramah kantong. Buku fisik hasil cetaknya sangat berkualitas dan rapi.',
   },
 ];
 
@@ -486,7 +486,7 @@ export const FAQS = [
   },
   {
     q: 'Berapa lama proses dari kirim naskah sampai buku terbit?',
-    a: 'Untuk Paket Mandiri dan Reguler, proses layout dan desain sampul berkisar 5–10 hari kerja. Pengajuan ISBN ke Perpusnas RI bergantung pada antrean sistem Perpusnas (rata-rata 3–7 hari kerja). Proses cetak buku fisik memakan waktu 4–7 hari kerja.',
+    a: 'Untuk Paket Mandiri dan Reguler, proses layout dan desain sampul berkisar 5–10 hari kerja. Proses cetak buku fisik memakan waktu 4–7 hari kerja setelah naskah akhir disetujui.',
   },
   {
     q: 'Bolehkah mencetak buku dalam jumlah sedikit (misal 5 atau 10 eksemplar)?',
@@ -494,6 +494,6 @@ export const FAQS = [
   },
   {
     q: 'Apakah buku hasil terbitan bisa dijual ke publik?',
-    a: 'Bisa. Buku Anda sudah ber-ISBN dan barcode resmi sehingga sah untuk diedarkan secara komersial. Kami juga menyediakan etalase Toko Buku Qissah di website ini untuk memudahkan calon pembaca Anda.',
+    a: 'Bisa. Buku Anda sudah memiliki legalitas resmi sehingga sah untuk diedarkan secara komersial. Kami juga menyediakan etalase Toko Buku Qissah di website ini untuk memudahkan calon pembaca Anda.',
   },
 ];

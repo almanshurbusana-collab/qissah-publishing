@@ -316,7 +316,7 @@ Mohon konfirmasi dan info tahapan pengiriman naskahnya. Terima kasih!`;
                 {formatRp(totalEstimatedCost)}
               </div>
               <p className="text-[11px] text-[#46605A] mt-1">
-                *Sudah termasuk pengurusan ISBN resmi &amp; barcode Perpusnas. Belum termasuk ongkos kirim.
+                *Sudah termasuk pengurusan penerbitan &amp; layout standar. Belum termasuk ongkos kirim.
               </p>
             </div>
           </div>

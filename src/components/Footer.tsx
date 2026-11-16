@@ -29,7 +29,7 @@ export const Footer: React.FC<FooterProps> = ({
                 Punya draf naskah yang siap diterbitkan?
               </h2>
               <p className="mt-2 text-sm text-emerald-200">
-                Diskusikan format, estimasi biaya cetak, dan alur perolehan ISBN resmi Perpustakaan Nasional bersama tim editorial Qissah.
+                Diskusikan format, estimasi biaya cetak, dan alur penerbitan buku bersama tim editorial Qissah.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
@@ -80,7 +80,7 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
 
             <p className="text-sm text-emerald-300/90 leading-relaxed max-w-md">
-              Penerbit buku ber-ISBN resmi di Kota Bogor. Melayani penerbitan karya sastra, buku ajar, monograf akademik, memoar, antologi, dan buku saku komunitas dengan standar perwajahan profesional.
+              Penerbit buku berkualitas dan legal di Kota Bogor. Melayani penerbitan karya sastra, buku ajar, monograf akademik, memoar, antologi, dan buku saku komunitas dengan standar perwajahan profesional.
             </p>
 
             <div className="pt-2">

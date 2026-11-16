@@ -174,7 +174,7 @@ export default function App() {
   // Direct WhatsApp purchase for detail view
   const handleDirectBuyWA = (book: Book, qty: number) => {
     const total = book.price * qty;
-    const msg = `Halo Redaksi Qissah Publishing, saya ingin memesan buku berikut:\n\n*Judul:* ${book.title}\n*Penulis:* ${book.author}\n*ISBN:* ${formatIsbn(book.isbn)}\n*Jumlah:* ${qty} eksemplar\n*Total Harga Buku:* Rp ${total.toLocaleString('id-ID')}\n\nMohon info ketersediaan stok fisik dan estimasi ongkir ke alamat saya. Terima kasih!`;
+    const msg = `Halo Redaksi Qissah Publishing, saya ingin memesan buku berikut:\n\n*Judul:* ${book.title}\n*Penulis:* ${book.author}\n*Jumlah:* ${qty} eksemplar\n*Total Harga Buku:* Rp ${total.toLocaleString('id-ID')}\n\nMohon info ketersediaan stok fisik dan estimasi ongkir ke alamat saya. Terima kasih!`;
     const url = `https://wa.me/${COMPANY.waNumber}?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
@@ -290,7 +290,7 @@ export default function App() {
                           100%
                         </div>
                         <div className="text-xs font-mono text-emerald-300 uppercase tracking-wider mt-0.5">
-                          ISBN Resmi Perpusnas
+                          Legal &amp; Berstandar
                         </div>
                       </div>
                       <div>
@@ -365,7 +365,7 @@ export default function App() {
                     5 Langkah Mudah Menerbitkan Buku
                   </h2>
                   <p className="mt-3 text-emerald-800 text-sm">
-                    Dari naskah di laptop Anda hingga menjadi buku cetak ber-ISBN yang siap diedarkan ke pembaca.
+                    Dari naskah di laptop Anda hingga menjadi buku cetak berkualitas yang siap diedarkan ke pembaca.
                   </p>
                 </div>
 
@@ -523,7 +523,7 @@ export default function App() {
                       Buku Terbaru dari Penulis Kami
                     </h2>
                     <p className="mt-2 text-emerald-800 text-sm">
-                      Semua buku telah memiliki ISBN resmi dan disimpan di Perpustakaan Nasional RI & Dinas Arsip.
+                      Kumpulan buku pilihan hasil karya penulis kami dengan standar percetakan berkualitas.
                     </p>
                   </div>
                   <button
@@ -564,9 +564,6 @@ export default function App() {
                           </h3>
                           <p className="text-xs text-emerald-800 mt-1">
                             Oleh: <span className="font-medium">{book.author}</span>
-                          </p>
-                          <p className="text-[11px] font-mono text-emerald-600 mt-1">
-                            ISBN: {formatIsbn(book.isbn)}
                           </p>
                         </div>
 
@@ -659,7 +656,7 @@ export default function App() {
                     Pertanyaan Seputar Penerbitan Buku
                   </h2>
                   <p className="mt-2 text-emerald-800 text-sm">
-                    Pertanyaan umum mengenai ISBN resmi, royalti, hak cipta, dan proses percetakan.
+                    Pertanyaan umum mengenai alur penerbitan, royalti, hak cipta, dan proses percetakan.
                   </p>
                 </div>
 
@@ -724,7 +721,7 @@ export default function App() {
                   Toko Buku Qissah Publishing
                 </h1>
                 <p className="mt-2 text-emerald-800 text-sm max-w-2xl">
-                  Buku karya sastra, monograf akademik, kajian sains, dan antologi ber-ISBN resmi Perpustakaan Nasional. Siap dikirim ke seluruh Indonesia.
+                  Buku karya sastra, monograf akademik, kajian sains, dan antologi berkualitas pilihan. Siap dikirim ke seluruh Indonesia.
                 </p>
 
                 {/* Search & Sort Filters */}
@@ -736,7 +733,7 @@ export default function App() {
                       type="text"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="Cari judul buku, nama penulis, atau ISBN..."
+                      placeholder="Cari judul buku atau nama penulis..."
                       className="w-full pl-10 pr-4 py-2.5 bg-white border-2 border-emerald-950 text-sm font-sans placeholder:text-emerald-600/60 focus:outline-none focus:ring-2 focus:ring-emerald-700"
                     />
                     {searchQuery && (
@@ -847,9 +844,6 @@ export default function App() {
                           <p className="text-xs text-emerald-800 mt-1">
                             Penulis: <span className="font-medium">{book.author}</span>
                           </p>
-                          <p className="text-[11px] font-mono text-emerald-600 mt-1">
-                            ISBN: {formatIsbn(book.isbn)}
-                          </p>
 
                           <p className="text-xs text-emerald-800/80 mt-2 line-clamp-2">
                             {book.synopsis}
@@ -926,11 +920,11 @@ export default function App() {
                     <div className="bg-[#F2F7F4] p-6 border-2 border-emerald-950 shadow-[4px_4px_0_#0A2A22] w-full flex flex-col items-center">
                       <BookCover book={currentBook} width={260} height={370} />
 
-                      {/* Real Barcode plate */}
+                      {/* Barcode plate */}
                       <div className="mt-6 w-full pt-4 border-t border-emerald-900/10 flex flex-col items-center">
                         <BarcodeSvg isbn={currentBook.isbn} width={220} height={70} />
                         <span className="text-[11px] font-mono text-emerald-700 mt-2">
-                          Barcode Resmi EAN-13: {calculateEan13(currentBook.isbn).full}
+                          Barcode Produk Buku
                         </span>
                       </div>
                     </div>
@@ -998,10 +992,6 @@ export default function App() {
                         <div className="grid grid-cols-2 divide-x divide-emerald-950 border-b border-emerald-950 bg-emerald-100/60 p-2 font-bold">
                           <span>Karakteristik</span>
                           <span>Keterangan Redaksi</span>
-                        </div>
-                        <div className="grid grid-cols-2 divide-x divide-emerald-950 border-b border-emerald-200 p-2">
-                          <span className="text-emerald-700">ISBN Resmi</span>
-                          <span className="font-bold text-emerald-950">{formatIsbn(currentBook.isbn)}</span>
                         </div>
                         <div className="grid grid-cols-2 divide-x divide-emerald-950 border-b border-emerald-200 p-2 bg-emerald-50/40">
                           <span className="text-emerald-700">Jumlah Halaman</span>
@@ -1188,7 +1178,7 @@ export default function App() {
                     <ul className="text-xs sm:text-sm text-emerald-900 space-y-2 leading-relaxed">
                       <li className="flex items-start gap-2">
                         <Check className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
-                        <span>Menyediakan jalur penerbitan ber-ISBN resmi yang cepat, transparan, dan terjangkau bagi semua kalangan.</span>
+                        <span>Menyediakan jalur penerbitan buku yang cepat, transparan, dan terjangkau bagi semua kalangan.</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <Check className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
@@ -1309,7 +1299,7 @@ export default function App() {
                       </div>
                     </div>
                     <p className="text-xs text-emerald-700 italic">
-                      Dengan izin legal ini, permohonan ISBN buku Anda diproses secara resmi langsung ke sistem ISBN Perpustakaan Nasional tanpa perantara pihak ketiga yang merugikan.
+                      Dengan izin legal ini, proses penerbitan buku Anda dikelola secara sah, profesional, dan terpercaya langsung oleh tim redaksi resmi.
                     </p>
                   </div>
                 </div>
