@@ -22,6 +22,33 @@ export const BookCover: React.FC<BookCoverProps> = ({
 
   const renderCoverArt = () => {
     switch (book.id) {
+      case 'keajaiban-istighfar':
+        return (
+          <g>
+            <rect width="300" height="420" fill="#062E23" />
+            <text x="28" y="36" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" letterSpacing="1" fill="rgba(245,203,69,0.85)">
+              PT. QISSAH GLOBAL NUSANTARA
+            </text>
+            <text x="28" y="62" fontFamily="Hanken Grotesk, sans-serif" fontSize="11" letterSpacing="2" fill="rgba(255,255,255,0.85)">
+              KISAH SAHIH
+            </text>
+            <text fontFamily="Gloock, Georgia, serif" fontSize="30" fill="#FFFFFF">
+              <tspan x="28" y="98">Keajaiban</tspan>
+              <tspan x="28" y="134" fill="#F5CB45">Istighfar</tspan>
+            </text>
+            <text x="150" y="180" fontFamily="Amiri, serif" fontSize="24" textAnchor="middle" fill="#F5CB45">
+              أَسْتَغْفِرُ اللَّهَ
+            </text>
+            <text x="28" y="214" fontFamily="Hanken Grotesk, sans-serif" fontSize="12" fill="rgba(255,255,255,0.85)">
+              {book.author}
+            </text>
+            <g transform="translate(150, 330)" stroke="#F5CB45" strokeWidth="1.5" fill="none" opacity="0.4">
+              <circle r="70" />
+              <polygon points="0,-70 70,0 0,70 -70,0" />
+            </g>
+          </g>
+        );
+
       case 'metodologi':
         return (
           <g>
@@ -212,6 +239,46 @@ export const BookCover: React.FC<BookCoverProps> = ({
 
   const renderBackCoverArt = () => {
     switch (book.id) {
+      case 'keajaiban-istighfar':
+        return (
+          <g>
+            <rect width="300" height="420" fill="#062E23" />
+            <text x="24" y="34" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" letterSpacing="1" fill="rgba(245,203,69,0.85)">
+              PT. QISSAH GLOBAL NUSANTARA
+            </text>
+            <text x="24" y="58" fontFamily="Gloock, Georgia, serif" fontSize="16" fill="#F5CB45">
+              Jalan Pulang Bernama Istighfar
+            </text>
+            <text x="24" y="76" fontFamily="Hanken Grotesk, sans-serif" fontSize="11" fontWeight="600" fill="#FFFFFF">
+              {book.author}
+            </text>
+            <line x1="24" y1="88" x2="276" y2="88" stroke="#F5CB45" strokeWidth="1.5" />
+            <foreignObject x="22" y="98" width="254" height="240">
+              <div xmlns="http://www.w3.org/1999/xhtml" className="text-emerald-100 text-[10.5px] leading-relaxed font-sans pr-2">
+                <p className="mb-2 text-white/95">
+                  Di dalam perut ikan besar, Nabi Yunus berdoa seraya mengakui kesalahannya. Ketika kekeringan melanda, Umar bin Khattab memperbanyak istighfar saat memohon hujan.
+                </p>
+                <p className="mb-2.5 text-white/80">
+                  Kisah Sahih Keajaiban Istighfar mengajak pembaca menyelami kisah-kisah tentang memohon ampun, memperbaiki diri, dan berharap kepada Allah di tengah kesulitan.
+                </p>
+                <div className="border-t border-emerald-600/50 pt-2 text-[9.5px] text-amber-300 font-mono">
+                  ★ Penelusuran Riwayat Shahih &amp; Renungan Kehidupan
+                </div>
+              </div>
+            </foreignObject>
+            <rect x="22" y="348" width="254" height="52" fill="#031C15" rx="2" stroke="rgba(245,203,69,0.2)" />
+            <text x="32" y="367" fontFamily="Hanken Grotesk, sans-serif" fontSize="9" fontWeight="700" fill="#FFFFFF">
+              PT. QISSAH GLOBAL NUSANTARA
+            </text>
+            <text x="32" y="380" fontFamily="Hanken Grotesk, sans-serif" fontSize="8" fill="rgba(255,255,255,0.75)">
+              Penerbitan Buku Berkualitas · Bogor Barat, Jawa Barat
+            </text>
+            <text x="32" y="392" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" fill="#F5CB45">
+              publishing.qissahgn.com
+            </text>
+          </g>
+        );
+
       case 'metodologi':
         return (
           <g>
@@ -490,8 +557,9 @@ export const BookCover: React.FC<BookCoverProps> = ({
   if (side === 'front' && book.coverFront) {
     return (
       <div
-        className={`relative select-none transition-transform duration-200 group-hover:-translate-y-1 ${className}`}
+        className={`relative select-none overflow-hidden transition-transform duration-200 group-hover:-translate-y-1 ${className}`}
         style={{
+          aspectRatio: '300 / 420',
           ...(showShadow ? { filter: 'drop-shadow(6px 8px 0px rgba(10, 42, 34, 0.22))' } : {}),
           ...(width ? { width: `${width}px` } : {}),
           ...(height ? { height: `${height}px` } : {}),
@@ -501,7 +569,10 @@ export const BookCover: React.FC<BookCoverProps> = ({
           src={book.coverFront}
           alt={`Sampul depan ${book.title}`}
           className="w-full h-full object-cover rounded-[2px]"
+          loading="lazy"
         />
+        {/* Book spine crease shadow for realistic book-sheet feel on the left */}
+        <div className="absolute inset-y-0 left-0 w-[4%] bg-gradient-to-r from-black/30 via-white/10 to-transparent pointer-events-none" />
       </div>
     );
   }
@@ -509,8 +580,9 @@ export const BookCover: React.FC<BookCoverProps> = ({
   if (side === 'back' && book.coverBack) {
     return (
       <div
-        className={`relative select-none transition-transform duration-200 group-hover:-translate-y-1 ${className}`}
+        className={`relative select-none overflow-hidden transition-transform duration-200 group-hover:-translate-y-1 ${className}`}
         style={{
+          aspectRatio: '300 / 420',
           ...(showShadow ? { filter: 'drop-shadow(6px 8px 0px rgba(10, 42, 34, 0.22))' } : {}),
           ...(width ? { width: `${width}px` } : {}),
           ...(height ? { height: `${height}px` } : {}),
@@ -520,7 +592,10 @@ export const BookCover: React.FC<BookCoverProps> = ({
           src={book.coverBack}
           alt={`Sampul belakang ${book.title}`}
           className="w-full h-full object-cover rounded-[2px]"
+          loading="lazy"
         />
+        {/* Book spine crease shadow on the right for back cover */}
+        <div className="absolute inset-y-0 right-0 w-[4%] bg-gradient-to-l from-black/30 via-white/10 to-transparent pointer-events-none" />
       </div>
     );
   }
