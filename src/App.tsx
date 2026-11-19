@@ -1061,9 +1061,13 @@ export default function App() {
                           <span className="text-emerald-700">Editor Naskah</span>
                           <span>{currentBook.editor}</span>
                         </div>
-                        <div className="grid grid-cols-2 divide-x divide-emerald-950 p-2">
-                          <span className="text-emerald-700">Penata Letak</span>
+                        <div className="grid grid-cols-2 divide-x divide-emerald-950 border-b border-emerald-200 p-2">
+                          <span className="text-emerald-700">Layout &amp; Desain</span>
                           <span>{currentBook.layout}</span>
+                        </div>
+                        <div className="grid grid-cols-2 divide-x divide-emerald-950 p-2 bg-emerald-50/40">
+                          <span className="text-emerald-700">ISBN</span>
+                          <span className="font-semibold text-emerald-900">Dalam Proses</span>
                         </div>
                       </div>
                     </div>
