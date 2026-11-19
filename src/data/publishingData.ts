@@ -31,6 +31,8 @@ export interface Book {
   dimensions: string;
   paper: string;
   cover: string;
+  coverFront?: string;
+  coverBack?: string;
   isbn12: string; // 12-digit prefix, e.g. 978623000001
   isbn: string;   // 13-digit calculated full ISBN string
   who: string;

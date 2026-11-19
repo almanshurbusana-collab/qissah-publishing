@@ -7,6 +7,7 @@ export interface BookCoverProps {
   showShadow?: boolean;
   width?: number;
   height?: number;
+  side?: 'front' | 'back';
 }
 
 export const BookCover: React.FC<BookCoverProps> = ({
@@ -15,6 +16,7 @@ export const BookCover: React.FC<BookCoverProps> = ({
   showShadow = true,
   width,
   height,
+  side = 'front',
 }) => {
   const ean = calculateEan13(book.isbn12);
 
@@ -208,6 +210,321 @@ export const BookCover: React.FC<BookCoverProps> = ({
     }
   };
 
+  const renderBackCoverArt = () => {
+    switch (book.id) {
+      case 'metodologi':
+        return (
+          <g>
+            <rect width="300" height="420" fill="#0A7B5B" />
+            <g stroke="rgba(255,255,255,0.12)" strokeWidth="1">
+              {[0, 40, 80, 120, 160, 200, 240, 280].map((x, i) => (
+                <line key={`bv-${i}`} x1={x} y1="0" x2={x} y2="420" />
+              ))}
+              {[50, 100, 150, 200, 250, 300, 350, 400].map((y, i) => (
+                <line key={`bh-${i}`} x1="0" y1={y} x2="300" y2={y} />
+              ))}
+            </g>
+            <text x="24" y="34" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" letterSpacing="1" fill="rgba(255,255,255,0.75)">
+              PT. QISSAH GLOBAL NUSANTARA
+            </text>
+            <text x="24" y="58" fontFamily="Gloock, Georgia, serif" fontSize="16" fill="#FFFFFF">
+              Metodologi Penelitian Kuantitatif
+            </text>
+            <text x="24" y="76" fontFamily="Hanken Grotesk, sans-serif" fontSize="11" fontWeight="600" fill="#F5CB45">
+              {book.author}
+            </text>
+            <line x1="24" y1="88" x2="276" y2="88" stroke="#F5CB45" strokeWidth="1.5" strokeOpacity="0.8" />
+
+            <foreignObject x="22" y="98" width="254" height="240">
+              <div xmlns="http://www.w3.org/1999/xhtml" className="text-white text-[10.5px] leading-relaxed font-sans pr-2">
+                <p className="mb-2 text-white/95">
+                  Buku ini dirancang khusus untuk mematahkan mitos bahwa penelitian kuantitatif itu rumit dan menakutkan bagi pemula. Disertai penjelasan terstruktur dan sistematis.
+                </p>
+                <p className="mb-2.5 text-white/85">
+                  Mulai dari perumusan hipotesis, teknik sampling representatif, penyusunan kuesioner berskala Likert, hingga interpretasi output regresi statistik SPSS.
+                </p>
+                <div className="border-t border-emerald-400/30 pt-2 text-[9.5px] text-amber-300 font-mono">
+                  ★ Referensi Standar Kuliah &amp; Riset Akademik
+                </div>
+              </div>
+            </foreignObject>
+
+            <rect x="22" y="348" width="254" height="52" fill="#07553F" rx="2" stroke="rgba(255,255,255,0.15)" />
+            <text x="32" y="367" fontFamily="Hanken Grotesk, sans-serif" fontSize="9" fontWeight="700" fill="#FFFFFF">
+              PT. QISSAH GLOBAL NUSANTARA
+            </text>
+            <text x="32" y="380" fontFamily="Hanken Grotesk, sans-serif" fontSize="8" fill="rgba(255,255,255,0.75)">
+              Penerbitan Buku Berkualitas · Bogor Barat, Jawa Barat
+            </text>
+            <text x="32" y="392" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" fill="#F5CB45">
+              publishing.qissahgn.com
+            </text>
+          </g>
+        );
+
+      case 'guru':
+        return (
+          <g>
+            <rect width="300" height="420" fill="#F5CB45" />
+            <path d="M0 0 L300 0 L300 90 L0 140 Z" fill="#E8B82B" opacity="0.35" />
+            <text x="24" y="34" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" letterSpacing="1" fill="rgba(10,42,34,0.7)">
+              PT. QISSAH GLOBAL NUSANTARA
+            </text>
+            <text x="24" y="58" fontFamily="Gloock, Georgia, serif" fontSize="16" fill="#0A2A22">
+              Guru Penggerak di Ruang Kelas
+            </text>
+            <text x="24" y="76" fontFamily="Hanken Grotesk, sans-serif" fontSize="11" fontWeight="600" fill="#0A7B5B">
+              {book.author}
+            </text>
+            <line x1="24" y1="88" x2="276" y2="88" stroke="#0A2A22" strokeWidth="1.5" />
+
+            <foreignObject x="22" y="98" width="254" height="240">
+              <div xmlns="http://www.w3.org/1999/xhtml" className="text-emerald-950 text-[10.5px] leading-relaxed font-sans pr-2">
+                <p className="mb-2 font-medium">
+                  Mengajar bukan sekadar menuntaskan kurikulum, melainkan menyalakan rasa ingin tahu siswa. Pengalaman nyata lebih dari satu dekade di ruang-ruang kelas Indonesia.
+                </p>
+                <p className="mb-2.5 text-emerald-900/90">
+                  Memuat lembar kerja refleksi guru, contoh rubrik asesmen autentik, serta kiat mengelola kelas heterogen secara berdiferensiasi dan bermakna.
+                </p>
+                <div className="border-t border-emerald-950/20 pt-2 text-[9.5px] text-emerald-950 font-mono font-bold">
+                  ★ Panduan Praktis Pendidik &amp; Kepala Sekolah
+                </div>
+              </div>
+            </foreignObject>
+
+            <rect x="22" y="348" width="254" height="52" fill="#0A2A22" rx="2" />
+            <text x="32" y="367" fontFamily="Hanken Grotesk, sans-serif" fontSize="9" fontWeight="700" fill="#FFFFFF">
+              PT. QISSAH GLOBAL NUSANTARA
+            </text>
+            <text x="32" y="380" fontFamily="Hanken Grotesk, sans-serif" fontSize="8" fill="rgba(255,255,255,0.8)">
+              Penerbitan Buku Berkualitas · Bogor Barat, Jawa Barat
+            </text>
+            <text x="32" y="392" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" fill="#F5CB45">
+              publishing.qissahgn.com
+            </text>
+          </g>
+        );
+
+      case 'ciliwung':
+        return (
+          <g>
+            <rect width="300" height="420" fill="#0A2A22" />
+            {[40, 80, 120, 160].map((wy, idx) => (
+              <path
+                key={idx}
+                d={`M0 ${wy} q25 -10 50 0 t50 0 t50 0 t50 0 t50 0 t50 0`}
+                fill="none"
+                stroke="#1B4D3E"
+                strokeWidth="1.5"
+                opacity="0.3"
+              />
+            ))}
+            <text x="24" y="34" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" letterSpacing="1" fill="rgba(234,245,239,0.7)">
+              PT. QISSAH GLOBAL NUSANTARA
+            </text>
+            <text x="24" y="58" fontFamily="Gloock, Georgia, serif" fontSize="16" fill="#E8F4EE">
+              Kisah dari Tepi Ciliwung
+            </text>
+            <text x="24" y="76" fontFamily="Hanken Grotesk, sans-serif" fontSize="11" fontWeight="600" fill="#3FD6A0">
+              {book.author}
+            </text>
+            <line x1="24" y1="88" x2="276" y2="88" stroke="#3FD6A0" strokeWidth="1.5" />
+
+            <foreignObject x="22" y="98" width="254" height="240">
+              <div xmlns="http://www.w3.org/1999/xhtml" className="text-emerald-100 text-[10.5px] leading-relaxed font-sans pr-2">
+                <p className="mb-2 text-emerald-50">
+                  Ciliwung menyimpan riwayat yang tak pernah habis dialirkan. Di tangan Salma Aulia, suara-suara lirih di sepanjang aliran sungai diangkat menjadi prosa yang memikat dan mengharukan.
+                </p>
+                <p className="mb-2.5 text-emerald-200/90">
+                  Setiap cerita merajut kehangatan persaudaraan, ketabahan bertahan hidup, dan aroma tanah basah seusai hujan lebat mengguyur hulu.
+                </p>
+                <div className="border-t border-emerald-700/60 pt-2 text-[9.5px] text-amber-300 font-mono">
+                  ★ Antologi Cerpen Sastra Nusantara
+                </div>
+              </div>
+            </foreignObject>
+
+            <rect x="22" y="348" width="254" height="52" fill="#061B16" rx="2" stroke="rgba(255,255,255,0.12)" />
+            <text x="32" y="367" fontFamily="Hanken Grotesk, sans-serif" fontSize="9" fontWeight="700" fill="#FFFFFF">
+              PT. QISSAH GLOBAL NUSANTARA
+            </text>
+            <text x="32" y="380" fontFamily="Hanken Grotesk, sans-serif" fontSize="8" fill="rgba(255,255,255,0.75)">
+              Penerbitan Buku Berkualitas · Bogor Barat, Jawa Barat
+            </text>
+            <text x="32" y="392" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" fill="#3FD6A0">
+              publishing.qissahgn.com
+            </text>
+          </g>
+        );
+
+      case 'menulis':
+        return (
+          <g>
+            <rect width="300" height="420" fill="#E3F1EA" />
+            <text x="24" y="34" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" letterSpacing="1" fill="rgba(10,42,34,0.7)">
+              PT. QISSAH GLOBAL NUSANTARA
+            </text>
+            <text x="24" y="58" fontFamily="Gloock, Georgia, serif" fontSize="15" fill="#0A2A22">
+              Menulis Buku Pertama untuk Orang Sibuk
+            </text>
+            <text x="24" y="76" fontFamily="Hanken Grotesk, sans-serif" fontSize="11" fontWeight="600" fill="#0A7B5B">
+              {book.author}
+            </text>
+            <line x1="24" y1="88" x2="276" y2="88" stroke="#0A7B5B" strokeWidth="1.5" />
+
+            <foreignObject x="22" y="98" width="254" height="240">
+              <div xmlns="http://www.w3.org/1999/xhtml" className="text-emerald-950 text-[10.5px] leading-relaxed font-sans pr-2">
+                <p className="mb-2 font-medium">
+                  Alasan nomor satu mengapa naskah tak pernah selesai bukanlah ketiadaan bakat, melainkan ketiadaan sistem yang selaras dengan kesibukan sehari-hari.
+                </p>
+                <p className="mb-2.5 text-emerald-900/90">
+                  Panduan taktis bagaimana menghasilkan 300 kata bermutu setiap pagi, mengorganisasi materi riset tanpa tersesat, dan menyunting mandiri hingga siap diterbitkan.
+                </p>
+                <div className="border-t border-emerald-950/20 pt-2 text-[9.5px] text-emerald-800 font-mono font-bold">
+                  ★ Panduan Produktivitas Penulis Pemula &amp; Karyawan
+                </div>
+              </div>
+            </foreignObject>
+
+            <rect x="22" y="348" width="254" height="52" fill="#0A2A22" rx="2" />
+            <text x="32" y="367" fontFamily="Hanken Grotesk, sans-serif" fontSize="9" fontWeight="700" fill="#FFFFFF">
+              PT. QISSAH GLOBAL NUSANTARA
+            </text>
+            <text x="32" y="380" fontFamily="Hanken Grotesk, sans-serif" fontSize="8" fill="rgba(255,255,255,0.8)">
+              Penerbitan Buku Berkualitas · Bogor Barat, Jawa Barat
+            </text>
+            <text x="32" y="392" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" fill="#F5CB45">
+              publishing.qissahgn.com
+            </text>
+          </g>
+        );
+
+      case 'fiqih-digital':
+        return (
+          <g>
+            <rect width="300" height="420" fill="#063E32" />
+            <text x="24" y="34" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" letterSpacing="1" fill="rgba(245,203,69,0.85)">
+              PT. QISSAH GLOBAL NUSANTARA
+            </text>
+            <text x="24" y="58" fontFamily="Gloock, Georgia, serif" fontSize="15" fill="#FFFFFF">
+              Fiqih Muamalah Digital &amp; Ekonomi Islam
+            </text>
+            <text x="24" y="76" fontFamily="Hanken Grotesk, sans-serif" fontSize="11" fontWeight="600" fill="#F5CB45">
+              {book.author}
+            </text>
+            <line x1="24" y1="88" x2="276" y2="88" stroke="#F5CB45" strokeWidth="1.5" />
+
+            <foreignObject x="22" y="98" width="254" height="240">
+              <div xmlns="http://www.w3.org/1999/xhtml" className="text-emerald-100 text-[10.5px] leading-relaxed font-sans pr-2">
+                <p className="mb-2 text-white/95">
+                  Perkembangan teknologi finansial menuntut pemahaman fiqih yang adaptif tanpa meninggalkan prinsip dasar syariah. Mengurai akad modern dengan diagram alir jernih.
+                </p>
+                <p className="mb-2.5 text-white/80">
+                  Membedah transaksi e-wallet, paylater, peer-to-peer lending syariah, dan cryptocurrency menurut fatwa DSN-MUI terkini beserta studi kasus perbankan syariah.
+                </p>
+                <div className="border-t border-emerald-600/50 pt-2 text-[9.5px] text-amber-300 font-mono">
+                  ★ Referensi Utama Mahasiswa &amp; Praktisi Fintech Syariah
+                </div>
+              </div>
+            </foreignObject>
+
+            <rect x="22" y="348" width="254" height="52" fill="#042720" rx="2" stroke="rgba(245,203,69,0.2)" />
+            <text x="32" y="367" fontFamily="Hanken Grotesk, sans-serif" fontSize="9" fontWeight="700" fill="#FFFFFF">
+              PT. QISSAH GLOBAL NUSANTARA
+            </text>
+            <text x="32" y="380" fontFamily="Hanken Grotesk, sans-serif" fontSize="8" fill="rgba(255,255,255,0.75)">
+              Penerbitan Buku Berkualitas · Bogor Barat, Jawa Barat
+            </text>
+            <text x="32" y="392" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" fill="#F5CB45">
+              publishing.qissahgn.com
+            </text>
+          </g>
+        );
+
+      case 'antologi-bogor':
+      default:
+        return (
+          <g>
+            <rect width="300" height="420" fill="#14362E" />
+            <text x="24" y="34" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" letterSpacing="1" fill="rgba(234,245,239,0.7)">
+              PT. QISSAH GLOBAL NUSANTARA
+            </text>
+            <text x="24" y="58" fontFamily="Gloock, Georgia, serif" fontSize="16" fill="#E8F4EE">
+              {book.title}
+            </text>
+            <text x="24" y="76" fontFamily="Hanken Grotesk, sans-serif" fontSize="11" fontWeight="600" fill="#F5CB45">
+              {book.author}
+            </text>
+            <line x1="24" y1="88" x2="276" y2="88" stroke="#3FD6A0" strokeWidth="1.5" />
+
+            <foreignObject x="22" y="98" width="254" height="240">
+              <div xmlns="http://www.w3.org/1999/xhtml" className="text-emerald-100 text-[10.5px] leading-relaxed font-sans pr-2">
+                <p className="mb-2 text-white/95">
+                  {book.synopsis}
+                </p>
+                <p className="mb-2.5 text-white/80">
+                  {book.desc || 'Karya literasi berstandar mutu perwajahan dan percetakan profesional dari redaksi PT. Qissah Global Nusantara.'}
+                </p>
+                <div className="border-t border-emerald-600/50 pt-2 text-[9.5px] text-amber-300 font-mono">
+                  ★ {book.category} · Edisi Cetak Perdana
+                </div>
+              </div>
+            </foreignObject>
+
+            <rect x="22" y="348" width="254" height="52" fill="#0D241E" rx="2" stroke="rgba(255,255,255,0.12)" />
+            <text x="32" y="367" fontFamily="Hanken Grotesk, sans-serif" fontSize="9" fontWeight="700" fill="#FFFFFF">
+              PT. QISSAH GLOBAL NUSANTARA
+            </text>
+            <text x="32" y="380" fontFamily="Hanken Grotesk, sans-serif" fontSize="8" fill="rgba(255,255,255,0.75)">
+              Penerbitan Buku Berkualitas · Bogor Barat, Jawa Barat
+            </text>
+            <text x="32" y="392" fontFamily="IBM Plex Mono, monospace" fontSize="7.5" fill="#3FD6A0">
+              publishing.qissahgn.com
+            </text>
+          </g>
+        );
+    }
+  };
+
+  // If a custom image was uploaded/configured for this side, display it
+  if (side === 'front' && book.coverFront) {
+    return (
+      <div
+        className={`relative select-none transition-transform duration-200 group-hover:-translate-y-1 ${className}`}
+        style={{
+          ...(showShadow ? { filter: 'drop-shadow(6px 8px 0px rgba(10, 42, 34, 0.22))' } : {}),
+          ...(width ? { width: `${width}px` } : {}),
+          ...(height ? { height: `${height}px` } : {}),
+        }}
+      >
+        <img
+          src={book.coverFront}
+          alt={`Sampul depan ${book.title}`}
+          className="w-full h-full object-cover rounded-[2px]"
+        />
+      </div>
+    );
+  }
+
+  if (side === 'back' && book.coverBack) {
+    return (
+      <div
+        className={`relative select-none transition-transform duration-200 group-hover:-translate-y-1 ${className}`}
+        style={{
+          ...(showShadow ? { filter: 'drop-shadow(6px 8px 0px rgba(10, 42, 34, 0.22))' } : {}),
+          ...(width ? { width: `${width}px` } : {}),
+          ...(height ? { height: `${height}px` } : {}),
+        }}
+      >
+        <img
+          src={book.coverBack}
+          alt={`Sampul belakang ${book.title}`}
+          className="w-full h-full object-cover rounded-[2px]"
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       className={`relative select-none transition-transform duration-200 group-hover:-translate-y-1 ${className}`}
@@ -221,15 +538,25 @@ export const BookCover: React.FC<BookCoverProps> = ({
         className="w-full h-auto block rounded-[2px]"
         viewBox="0 0 300 420"
         role="img"
-        aria-label={`Sampul buku ${book.title}`}
+        aria-label={`Sampul ${side === 'front' ? 'depan' : 'belakang'} buku ${book.title}`}
         xmlns="http://www.w3.org/2000/svg"
       >
-        {renderCoverArt()}
+        {side === 'back' ? renderBackCoverArt() : renderCoverArt()}
 
-        {/* Book spine crease shadow for realistic book-sheet feel */}
-        <rect width="9" height="420" fill="rgba(0,0,0,0.24)" />
-        <path d="M10 0 V420" stroke="rgba(255,255,255,0.22)" strokeWidth="1" />
-        <path d="M12 0 V420" stroke="rgba(0,0,0,0.12)" strokeWidth="1" />
+        {/* Realistic book spine crease shadow */}
+        {side === 'front' ? (
+          <>
+            <rect width="9" height="420" fill="rgba(0,0,0,0.24)" />
+            <path d="M10 0 V420" stroke="rgba(255,255,255,0.22)" strokeWidth="1" />
+            <path d="M12 0 V420" stroke="rgba(0,0,0,0.12)" strokeWidth="1" />
+          </>
+        ) : (
+          <>
+            <rect x="291" width="9" height="420" fill="rgba(0,0,0,0.24)" />
+            <path d="M290 0 V420" stroke="rgba(255,255,255,0.22)" strokeWidth="1" />
+            <path d="M288 0 V420" stroke="rgba(0,0,0,0.12)" strokeWidth="1" />
+          </>
+        )}
       </svg>
     </div>
   );

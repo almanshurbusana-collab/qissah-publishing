@@ -28,6 +28,8 @@ import {
   FileCheck,
   ChevronDown,
   ChevronUp,
+  ChevronLeft,
+  ChevronRight,
   MapPin,
   ExternalLink,
   ShieldCheck,
@@ -61,6 +63,12 @@ export default function App() {
 
   // Book detail purchase quantity
   const [detailQty, setDetailQty] = useState(1);
+
+  // Book detail cover slide ('front' | 'back')
+  const [coverSlide, setCoverSlide] = useState<'front' | 'back'>('front');
+
+  // Book detail synopsis popup modal
+  const [isSynopsisModalOpen, setIsSynopsisModalOpen] = useState(false);
 
   // Handle Path and Hash routing for clean shareable links without #
   useEffect(() => {
@@ -130,12 +138,28 @@ export default function App() {
     };
   }, []);
 
+  // Handle ESC key and scroll lock for Synopsis modal
+  useEffect(() => {
+    if (!isSynopsisModalOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsSynopsisModalOpen(false);
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = 'auto';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isSynopsisModalOpen]);
+
   const navigateTo = (tab: string, bookId?: string) => {
     let targetPath = '/';
     if (tab === 'buku' && bookId) {
       setSelectedBookId(bookId);
       targetPath = `/buku/${bookId}`;
       setDetailQty(1);
+      setCoverSlide('front');
+      setIsSynopsisModalOpen(false);
     } else if (tab === 'toko-buku' || tab === 'katalog-buku') {
       targetPath = '/katalog-buku';
     } else if (tab === 'kalkulator') {
@@ -971,13 +995,113 @@ export default function App() {
               {/* Main Product Card */}
               <div className="bg-white border-2 border-emerald-950 shadow-[6px_6px_0_#0A2A22] p-6 sm:p-10">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-                  {/* Left Column: Big Cover */}
+                  {/* Left Column: Big Cover with Slide Controls */}
                   <div className="lg:col-span-5 flex flex-col items-center">
-                    <div className="bg-[#F2F7F4] p-6 border-2 border-emerald-950 shadow-[4px_4px_0_#0A2A22] w-full flex flex-col items-center">
-                      <BookCover book={currentBook} width={260} height={370} />
+                    {/* Slide Navigation Tabs */}
+                    <div className="w-full flex items-center justify-between mb-3">
+                      <div className="inline-flex rounded-xs border-2 border-emerald-950 p-0.5 bg-white shadow-[2px_2px_0_#0A2A22]">
+                        <button
+                          type="button"
+                          onClick={() => setCoverSlide('front')}
+                          className={`px-3 py-1 font-mono text-xs font-bold transition-all cursor-pointer ${
+                            coverSlide === 'front'
+                              ? 'bg-emerald-950 text-white shadow-xs'
+                              : 'text-emerald-900 hover:bg-emerald-100'
+                          }`}
+                        >
+                          Cover Depan
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setCoverSlide('back')}
+                          className={`px-3 py-1 font-mono text-xs font-bold transition-all cursor-pointer ${
+                            coverSlide === 'back'
+                              ? 'bg-emerald-950 text-white shadow-xs'
+                              : 'text-emerald-900 hover:bg-emerald-100'
+                          }`}
+                        >
+                          Cover Belakang
+                        </button>
+                      </div>
+
+                      <span className="font-mono text-xs text-emerald-800 font-bold bg-emerald-100 px-2.5 py-1 border border-emerald-300">
+                        {coverSlide === 'front' ? '1 / 2' : '2 / 2'}
+                      </span>
                     </div>
 
-                    <div className="mt-4 text-center">
+                    {/* Main Cover Display Box with Side Navigation Arrows */}
+                    <div className="relative bg-[#F2F7F4] p-6 border-2 border-emerald-950 shadow-[4px_4px_0_#0A2A22] w-full flex flex-col items-center justify-center group overflow-hidden">
+                      {/* Left arrow (Slide to previous / toggle) */}
+                      <button
+                        type="button"
+                        onClick={() => setCoverSlide((prev) => (prev === 'front' ? 'back' : 'front'))}
+                        className="absolute left-2.5 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white/95 hover:bg-white border-2 border-emerald-950 shadow-[2px_2px_0_#0A2A22] flex items-center justify-center text-emerald-950 cursor-pointer transition-transform hover:scale-110 active:scale-95"
+                        title={coverSlide === 'front' ? 'Lihat Cover Belakang' : 'Lihat Cover Depan'}
+                        aria-label="Slide sebelumnya"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </button>
+
+                      {/* Cover View */}
+                      <div className="transition-all duration-200">
+                        <BookCover
+                          book={currentBook}
+                          side={coverSlide}
+                          width={260}
+                          height={370}
+                        />
+                      </div>
+
+                      {/* Right arrow (Slide to next / toggle) */}
+                      <button
+                        type="button"
+                        onClick={() => setCoverSlide((prev) => (prev === 'front' ? 'back' : 'front'))}
+                        className="absolute right-2.5 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white/95 hover:bg-white border-2 border-emerald-950 shadow-[2px_2px_0_#0A2A22] flex items-center justify-center text-emerald-950 cursor-pointer transition-transform hover:scale-110 active:scale-95"
+                        title={coverSlide === 'front' ? 'Lihat Cover Belakang' : 'Lihat Cover Depan'}
+                        aria-label="Slide berikutnya"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+
+                      <div className="mt-3 text-center">
+                        <span className="inline-block text-[11px] font-mono text-emerald-800 bg-emerald-100/90 px-2 py-0.5 border border-emerald-200">
+                          {coverSlide === 'front' ? 'Sampul Depan (Cover Depan)' : 'Sampul Belakang (Cover Belakang)'}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Thumbnail Switcher Row */}
+                    <div className="flex items-center gap-3 mt-3.5">
+                      <button
+                        type="button"
+                        onClick={() => setCoverSlide('front')}
+                        className={`p-1 border-2 transition-all cursor-pointer bg-white ${
+                          coverSlide === 'front'
+                            ? 'border-emerald-950 shadow-[2px_2px_0_#0A2A22] scale-105'
+                            : 'border-emerald-300 opacity-60 hover:opacity-100'
+                        }`}
+                        title="Pilih Cover Depan"
+                      >
+                        <BookCover book={currentBook} side="front" width={48} height={68} showShadow={false} />
+                        <span className="block text-[9px] font-mono text-center mt-0.5 font-bold text-emerald-950">Depan</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setCoverSlide('back')}
+                        className={`p-1 border-2 transition-all cursor-pointer bg-white ${
+                          coverSlide === 'back'
+                            ? 'border-emerald-950 shadow-[2px_2px_0_#0A2A22] scale-105'
+                            : 'border-emerald-300 opacity-60 hover:opacity-100'
+                        }`}
+                        title="Pilih Cover Belakang"
+                      >
+                        <BookCover book={currentBook} side="back" width={48} height={68} showShadow={false} />
+                        <span className="block text-[9px] font-mono text-center mt-0.5 font-bold text-emerald-950">Belakang</span>
+                      </button>
+                    </div>
+
+                    <div className="mt-3 text-center">
                       <span className="text-xs font-mono text-emerald-700">
                         Penerbit Resmi: {COMPANY.legalName}
                       </span>
@@ -990,9 +1114,6 @@ export default function App() {
                       <div className="flex items-center gap-2 mb-2">
                         <span className="font-mono text-xs font-bold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 border border-emerald-300">
                           {currentBook.category}
-                        </span>
-                        <span className="font-mono text-xs text-emerald-700">
-                          Tahun Terbit: {currentBook.year}
                         </span>
                       </div>
 
@@ -1016,58 +1137,76 @@ export default function App() {
                       <span className="font-serif text-3xl font-bold text-emerald-950">
                         Rp {currentBook.price.toLocaleString('id-ID')}
                       </span>
-                      <span className="text-xs font-mono text-emerald-600">
-                        (Termasuk Royalti Penulis)
-                      </span>
                     </div>
 
                     {/* Synopsis */}
                     <div>
-                      <h3 className="font-mono text-xs uppercase font-bold tracking-wider text-emerald-800 mb-2">
-                        Sinopsis Buku:
-                      </h3>
-                      <p className="text-sm text-emerald-900 leading-relaxed font-sans">
+                      <div className="flex items-center justify-between mb-2">
+                        <h3 className="font-mono text-xs uppercase font-bold tracking-wider text-emerald-800">
+                          Sinopsis Buku:
+                        </h3>
+                        <button
+                          type="button"
+                          onClick={() => setIsSynopsisModalOpen(true)}
+                          className="text-xs font-mono font-bold text-emerald-800 hover:text-emerald-950 underline inline-flex items-center gap-1 cursor-pointer"
+                        >
+                          Selengkapnya <ExternalLink className="w-3 h-3" />
+                        </button>
+                      </div>
+                      <p className="text-sm text-emerald-900 leading-relaxed font-sans line-clamp-3">
                         {currentBook.synopsis}
                       </p>
+                      <button
+                        type="button"
+                        onClick={() => setIsSynopsisModalOpen(true)}
+                        className="inline-flex items-center gap-1.5 mt-2 font-mono text-xs font-bold text-emerald-900 hover:text-emerald-950 bg-emerald-100 hover:bg-emerald-200/80 px-2.5 py-1 border border-emerald-300 cursor-pointer"
+                      >
+                        <span>Baca Sinopsis Selengkapnya</span>
+                        <span aria-hidden="true">&rarr;</span>
+                      </button>
                     </div>
 
                     {/* Metadata Specification Table */}
                     <div>
                       <h3 className="font-mono text-xs uppercase font-bold tracking-wider text-emerald-800 mb-2">
-                        Spesifikasi Fisik & Bibliografi:
+                        Spesifikasi Fisik &amp; Bibliografi:
                       </h3>
                       <div className="border border-emerald-950 overflow-hidden text-xs font-mono">
-                        <div className="grid grid-cols-2 divide-x divide-emerald-950 border-b border-emerald-950 bg-emerald-100/60 p-2 font-bold">
-                          <span>Karakteristik</span>
-                          <span>Keterangan Redaksi</span>
+                        <div className="grid grid-cols-[145px_1fr] sm:grid-cols-[165px_1fr] divide-x divide-emerald-950 border-b border-emerald-950 bg-emerald-100/60 p-2 font-bold">
+                          <span className="pr-3 text-emerald-950">Karakteristik</span>
+                          <span className="pl-4 text-emerald-950">Keterangan Redaksi</span>
                         </div>
-                        <div className="grid grid-cols-2 divide-x divide-emerald-950 border-b border-emerald-200 p-2 bg-emerald-50/40">
-                          <span className="text-emerald-700">Jumlah Halaman</span>
-                          <span>{currentBook.pages} Halaman (Isi)</span>
+                        <div className="grid grid-cols-[145px_1fr] sm:grid-cols-[165px_1fr] divide-x divide-emerald-950 border-b border-emerald-200 p-2 bg-emerald-50/40">
+                          <span className="text-emerald-700 pr-3">Tahun Terbit</span>
+                          <span className="pl-4 font-semibold text-emerald-950">{currentBook.publicationYear || currentBook.year}</span>
                         </div>
-                        <div className="grid grid-cols-2 divide-x divide-emerald-950 border-b border-emerald-200 p-2">
-                          <span className="text-emerald-700">Dimensi / Ukuran</span>
-                          <span>{currentBook.dimensions}</span>
+                        <div className="grid grid-cols-[145px_1fr] sm:grid-cols-[165px_1fr] divide-x divide-emerald-950 border-b border-emerald-200 p-2">
+                          <span className="text-emerald-700 pr-3">Jumlah Halaman</span>
+                          <span className="pl-4">{currentBook.pages} Halaman (Isi)</span>
                         </div>
-                        <div className="grid grid-cols-2 divide-x divide-emerald-950 border-b border-emerald-200 p-2 bg-emerald-50/40">
-                          <span className="text-emerald-700">Kertas Isi</span>
-                          <span>{currentBook.paper}</span>
+                        <div className="grid grid-cols-[145px_1fr] sm:grid-cols-[165px_1fr] divide-x divide-emerald-950 border-b border-emerald-200 p-2 bg-emerald-50/40">
+                          <span className="text-emerald-700 pr-3">Dimensi / Ukuran</span>
+                          <span className="pl-4">{currentBook.dimensions}</span>
                         </div>
-                        <div className="grid grid-cols-2 divide-x divide-emerald-950 border-b border-emerald-200 p-2">
-                          <span className="text-emerald-700">Sampul (Cover)</span>
-                          <span>{currentBook.cover}</span>
+                        <div className="grid grid-cols-[145px_1fr] sm:grid-cols-[165px_1fr] divide-x divide-emerald-950 border-b border-emerald-200 p-2">
+                          <span className="text-emerald-700 pr-3">Kertas Isi</span>
+                          <span className="pl-4">{currentBook.paper}</span>
                         </div>
-                        <div className="grid grid-cols-2 divide-x divide-emerald-950 border-b border-emerald-200 p-2 bg-emerald-50/40">
-                          <span className="text-emerald-700">Editor Naskah</span>
-                          <span>{currentBook.editor}</span>
+                        <div className="grid grid-cols-[145px_1fr] sm:grid-cols-[165px_1fr] divide-x divide-emerald-950 border-b border-emerald-200 p-2 bg-emerald-50/40">
+                          <span className="text-emerald-700 pr-3">Sampul (Cover)</span>
+                          <span className="pl-4">{currentBook.cover}</span>
                         </div>
-                        <div className="grid grid-cols-2 divide-x divide-emerald-950 border-b border-emerald-200 p-2">
-                          <span className="text-emerald-700">Layout &amp; Desain</span>
-                          <span>{currentBook.layout}</span>
+                        <div className="grid grid-cols-[145px_1fr] sm:grid-cols-[165px_1fr] divide-x divide-emerald-950 border-b border-emerald-200 p-2">
+                          <span className="text-emerald-700 pr-3">Editor Naskah</span>
+                          <span className="pl-4">{currentBook.editor}</span>
                         </div>
-                        <div className="grid grid-cols-2 divide-x divide-emerald-950 p-2 bg-emerald-50/40">
-                          <span className="text-emerald-700">ISBN</span>
-                          <span className="font-semibold text-emerald-900">Dalam Proses</span>
+                        <div className="grid grid-cols-[145px_1fr] sm:grid-cols-[165px_1fr] divide-x divide-emerald-950 border-b border-emerald-200 p-2 bg-emerald-50/40">
+                          <span className="text-emerald-700 pr-3">Layout &amp; Desain</span>
+                          <span className="pl-4">{currentBook.layout}</span>
+                        </div>
+                        <div className="grid grid-cols-[145px_1fr] sm:grid-cols-[165px_1fr] divide-x divide-emerald-950 p-2">
+                          <span className="text-emerald-700 pr-3">ISBN</span>
+                          <span className="pl-4 font-semibold text-emerald-900">Dalam Proses</span>
                         </div>
                       </div>
                     </div>
@@ -1451,6 +1590,106 @@ export default function App() {
         isOpen={isLegalLightboxOpen}
         onClose={() => setIsLegalLightboxOpen(false)}
       />
+
+      {/* Book Synopsis Popup Modal */}
+      {isSynopsisModalOpen && currentBook && (
+        <div
+          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4"
+          onClick={() => setIsSynopsisModalOpen(false)}
+        >
+          <div
+            className="bg-white border-2 border-emerald-950 shadow-[8px_8px_0_#0A2A22] max-w-2xl w-full max-h-[88vh] flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-150"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="synopsis-modal-title"
+          >
+            {/* Modal Header */}
+            <div className="bg-emerald-950 text-emerald-50 px-6 py-4 flex items-center justify-between border-b-2 border-emerald-950">
+              <div className="pr-4">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-emerald-300 block">
+                  Sinopsis Lengkap · {currentBook.category}
+                </span>
+                <h3 id="synopsis-modal-title" className="font-serif text-lg sm:text-xl font-bold text-white line-clamp-1">
+                  {currentBook.title}
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsSynopsisModalOpen(false)}
+                className="p-1.5 text-emerald-300 hover:text-white hover:bg-emerald-800 rounded transition-colors cursor-pointer"
+                aria-label="Tutup popup sinopsis"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-6 sm:p-8 overflow-y-auto space-y-4 text-emerald-950">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 pb-3 border-b border-emerald-100 text-xs font-mono text-emerald-700">
+                <span>Penulis: <strong className="text-emerald-950">{currentBook.author}</strong></span>
+                <span>•</span>
+                <span>Tahun: <strong className="text-emerald-950">{currentBook.publicationYear || currentBook.year}</strong></span>
+                <span>•</span>
+                <span>Halaman: <strong className="text-emerald-950">{currentBook.pages} Hal.</strong></span>
+              </div>
+
+              <div className="space-y-3.5 text-sm sm:text-base leading-relaxed text-emerald-900 font-sans">
+                {(currentBook.synopsisParagraphs && currentBook.synopsisParagraphs.length > 0
+                  ? currentBook.synopsisParagraphs
+                  : [currentBook.synopsis]
+                ).map((para, idx) => (
+                  <p
+                    key={idx}
+                    className={
+                      idx === 0
+                        ? "first-letter:text-3xl first-letter:font-serif first-letter:font-bold first-letter:float-left first-letter:mr-2.5 first-letter:leading-none first-letter:text-emerald-950"
+                        : ""
+                    }
+                  >
+                    {para}
+                  </p>
+                ))}
+              </div>
+
+              {currentBook.desc && (
+                <div className="mt-4 p-4 bg-emerald-50 border-l-4 border-emerald-700 text-xs sm:text-sm text-emerald-900 font-sans">
+                  <strong className="block font-mono text-xs uppercase text-emerald-800 mb-1">
+                    Catatan Sasaran Pembaca:
+                  </strong>
+                  {currentBook.desc}
+                </div>
+              )}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="bg-emerald-50 px-6 py-3.5 border-t border-emerald-200 flex flex-wrap items-center justify-between gap-3">
+              <span className="text-xs font-mono text-emerald-700">
+                Penerbit: {COMPANY.legalName}
+              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsSynopsisModalOpen(false);
+                    handleDirectBuyWA(currentBook, detailQty);
+                  }}
+                  className="px-4 py-1.5 bg-amber-400 hover:bg-amber-300 text-emerald-950 font-mono text-xs font-bold uppercase tracking-wider cursor-pointer border border-emerald-950"
+                >
+                  Pesan Buku Ini
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsSynopsisModalOpen(false)}
+                  className="px-4 py-1.5 bg-emerald-950 hover:bg-emerald-900 text-white font-mono text-xs font-bold uppercase tracking-wider cursor-pointer border border-emerald-950"
+                >
+                  Tutup
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
