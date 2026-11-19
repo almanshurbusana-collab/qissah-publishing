@@ -99,7 +99,11 @@ export default function App() {
       // Read clean pathname
       const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
       if (path.startsWith('buku/')) {
-        const bId = path.replace('buku/', '');
+        let bId = path.replace('buku/', '');
+        if (bId === 'keajaiban-istighfar') {
+          bId = 'kisah-sahih-keajaiban-istighfar';
+          window.history.replaceState(null, '', `/buku/${bId}`);
+        }
         if (BOOKS.some((b) => b.id === bId)) {
           setSelectedBookId(bId);
           setActiveTab('buku');

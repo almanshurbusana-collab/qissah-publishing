@@ -22,6 +22,7 @@ export const BookCover: React.FC<BookCoverProps> = ({
 
   const renderCoverArt = () => {
     switch (book.id) {
+      case 'kisah-sahih-keajaiban-istighfar':
       case 'keajaiban-istighfar':
         return (
           <g>
@@ -239,6 +240,7 @@ export const BookCover: React.FC<BookCoverProps> = ({
 
   const renderBackCoverArt = () => {
     switch (book.id) {
+      case 'kisah-sahih-keajaiban-istighfar':
       case 'keajaiban-istighfar':
         return (
           <g>

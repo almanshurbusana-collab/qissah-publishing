@@ -195,7 +195,7 @@ export const PLANS: Plan[] = [
 
 export const BOOKS: Book[] = [
   {
-    id: 'keajaiban-istighfar',
+    id: 'kisah-sahih-keajaiban-istighfar',
     title: 'Kisah Sahih Keajaiban Istighfar',
     author: 'Rifaldi Faedilah, S.Ag., M.Pd.',
     category: 'Agama & Hikmah',
